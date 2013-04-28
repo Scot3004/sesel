@@ -1,0 +1,86 @@
+<!--Interfaz Movil Registro de Usuarios-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+        <link rel="stylesheet" href="css/tienda.css" />
+        <style>
+            /* App custom styles */
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.js">
+        </script>
+        <script src="js/tienda.js">
+        </script>
+		<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.min.css">
+		<script type='text/javascript' src="js/datebox.js"></script>
+		<script type='text/javascript'>//<![CDATA[ 
+		$(window).load(function(){
+		$('#linkmode').live('click', function() {
+			$('#linkmode').datebox('open');
+		});
+		});//]]>  
+		</script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-theme="b" data-role="header" data-position="fixed">
+                <h1>
+                    Registro
+                </h1>
+            </div>
+            <div data-role="content">
+            
+           <form action="" method="get" >
+           <label for="nombre">Nombres</label>
+           <input name="nombre" id="" placeholder="" value="" type="text" />
+           
+           <label for="apellido">Apellidos</label>
+           <input name="apellido" id="" placeholder="" value="" type="text" />
+           
+           <label for="direccion">Direccion</label>
+           <input name="direccion" id="" placeholder="" value="" type="text" />
+           
+           <label for="ciudad">Ciudad</label>
+           <input name="ciudad" id="" placeholder="" value="" type="text" />
+           
+           <label for="fnacimiento">Fecha de Nacimiento</label>
+          <input name="fnacimiento" data-role="datebox" id="linkmode" data-options='{"noButton": true}' placeholder="" value="" type="date" data-mini="true" />
+          
+           <label for="telefono">Telefono</label>
+           <input name="telefono" id="" placeholder="" value="" type="number" />
+           
+           <label for="genero">Genero</label>
+           <select id="genero" name="genero" data-native-menu="false" data-theme="b" data-mini="true" >
+                    <option value="0">Femenino</option>
+                    <option value="1">Masculino</option>
+           </select>
+          
+           <label for="nick">Nick</label>
+           <input name="nick" id="" placeholder="" value="" type="text" />
+           
+            <label for="clave">Clave</label>
+           <input name="clave" id="" placeholder="" value="" type="password" />
+           
+                <label for="rclave"> Repetir Clave</label>
+           <input name="rclave" id="" placeholder="" value="" type="password" />
+           
+             <input data-theme="b" data-icon="forward" data-iconpos="left" value="Registrar" data-mini="true" type="submit" name="registrar"/>
+         
+            </form>
+               
+            </div> 
+             <div data-theme="a" data-role="footer" data-position="fixed">
+                <h5 style="text-align:left;color:#01A9DB">
+                    Mi Tiendecita - Version Movil
+                </h5>
+            </div>
+
+    </body>
+</html>
