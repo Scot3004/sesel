@@ -1,6 +1,5 @@
 <?php
 render('_header',array('title'=>$software->nombre))?>
-
 <div class="rightColumn"><?php 
 echo $software->idSoftware;
 echo "<br/>";

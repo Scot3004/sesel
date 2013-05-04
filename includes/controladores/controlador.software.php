@@ -6,7 +6,7 @@ function limpiar($buffer){
 class ControladorSoftware {
     public function handleRequest() {
         if ($_GET["software"]) {
-            $software = Software::buscar(array('idSoftware' => $_GET['software']));
+            $software = Software::buscarObj(array('idSoftware' => $_GET['software']));
             render('detallesoftware', array(
                 'software' => $software[0]
             ));

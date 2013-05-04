@@ -1,7 +1,7 @@
 <?php
     require_once "includes/config.php";
     require_once "includes/helpers.php";
-    render('_header',array('title'=>"Registro de usuario"))
+    render('_header',array('title'=>"Registro de usuario"));
 ?>
     <script src="assets/js/tienda.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.mobile.datebox.min.css">

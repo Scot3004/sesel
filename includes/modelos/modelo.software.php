@@ -1,6 +1,22 @@
 <?php class Software{
     // la busqueda retorna un arreglo con los elementos cargados de la base de datos.
     public static function buscar($arr=Array()){
+        $st=Software::generarConsulta($arr);
+        //aca se ejecuta la consulta sql
+        $st->execute($arr);
+        //return $st->fetchAll(PDO::FETCH_CLASS, "Software");
+        return $st->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public static function buscarObj($arr=Array()){
+        global $db;
+        $st=Software::generarConsulta($arr);
+        //aca se ejecuta la consulta sql
+        $st->execute($arr);
+        return $st->fetchAll(PDO::FETCH_CLASS, "Software");
+    }
+   
+    public static function generarConsulta($arr=Array()){
         global $db;
         if($arr['idSoftware']){
             //esta consulta trae un solo registro
@@ -34,10 +50,7 @@
         }else{
             //esta consulta lista todo el software
             $st = $db->prepare("SELECT * FROM Software");
-        }
-        //aca se ejecuta la consulta sql
-        $st->execute($arr);
-        //return $st->fetchAll(PDO::FETCH_CLASS, "Software");
-        return $st->fetchAll(PDO::FETCH_ASSOC);
+        }     
+        return $st;
     }
 }
