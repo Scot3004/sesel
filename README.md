@@ -28,10 +28,10 @@ Objetivos específicos:
 ======
 - [x] Modelo Orientado a Objetos
 - [x] Login
-- [] Cerrar Sesión
+- [x] Cerrar Sesión
 - [x] Desarrollar XML
 - [] Realizar busquedas de software
--- [] segun asignaturas    
--- [] segun docentes
+- [] segun asignaturas    
+- [] segun docentes
 
     
