@@ -43,5 +43,3 @@ function formatTitle($title = ''){
 	
 	return $title;
 }
-
-?>

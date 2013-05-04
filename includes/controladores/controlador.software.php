@@ -1,19 +1,26 @@
 <?php
-
-/* This controller renders the category pages */
-
-class ControladorSoftware{
-	public function handleRequest(){
-		
-		$software = Software::buscar(array('idSoftware'=>$_GET['software']));
-		
-		// $categories and $products are both arrays with objects
-		
-		render('software',array(
-			'software'		=> $software[0]
-		));		
-	}
+function limpiar($buffer){
+    return trim($buffer);
 }
 
+class ControladorSoftware {
+    public function handleRequest() {
+        if ($_GET["software"]) {
+            $software = Software::buscar(array('idSoftware' => $_GET['software']));
+            render('detallesoftware', array(
+                'software' => $software[0]
+            ));
+        } else {
+            //ob_start('limpiar');
+            header("Content-type: text/xml");
+            $software = Software::buscar(Array());
+            $xml= new Array2xml();
+            $xml->Array2xml(array(
+                'Software' => $software));
+            echo $xml->getXml();
+            //ob_end_flush();
+        }
+    }
+    
 
-?>
+}

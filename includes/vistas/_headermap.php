@@ -2,7 +2,7 @@
 <html> 
 	<head> 
 	<title><?php echo formatTitle($title)?></title> 
-	
+        
 	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<meta http-equiv="Content-Language" content="es"/>
@@ -18,6 +18,12 @@
 		 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
 	 <![endif]-->
 	 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+    <script type="text/javascript">
+        $(document).bind("mobileinit", function () {
+        $.mobile.ajaxEnabled = false;
+        $.mobile.ajaxLinksEnabled(false);
+        });
+    </script>
  
 </head> 
 <body> 

@@ -27,5 +27,3 @@ class Asignatura{
 		return $st->fetchAll(PDO::FETCH_CLASS, "Asignatura");
 	}
 }
-
-?>

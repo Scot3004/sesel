@@ -31,5 +31,3 @@ catch(PDOException $e) {
 	error_log($e->getMessage());
 	die("Problemas en la base de datos<br/>".$e->getMessage());
 }
-
-?>

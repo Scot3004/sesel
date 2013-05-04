@@ -1,15 +1,10 @@
 <h1>Software Libre Repositorio</h1>
-<div id="map" style="width: 100%; height:300px;"></div>
-<script src="assets/js/OpenLayers.js"></script>
-<script>
-    map = new OpenLayers.Map("map");
-    map.addLayer(new OpenLayers.Layer.OSM());
-    map.zoomToMaxExtent();
-	map.setCenter(
-		new OpenLayers.LonLat(-74.81449, 10.96474).transform(
-			new OpenLayers.Projection("EPSG:4326"),
-			map.getProjectionObject()
-		), 12
-	);   
-</script>
-
+Para determinar las herramientas a desarrollar en el proyecto de investigación necesitamos establecer los objetivos que especificaran su finalidad.
+<h2>Objetivo general:</h2>
+Desarrollar una plataforma de aprendizaje web basada en software libre como apoyo al desarrollo en asignaturas de la educación básica secundaria  para la Institución Educativa Distrital José Martí del Barrio Simón Bolívar en el Distrito de Barranquilla.
+<h2>Objetivos específicos:</h2>
+<ul>
+    <li>Diseñar un espacio en el que los niños y jóvenes puedan aprender acerca de alternativas de software libre.</li>
+    <li>Recopilar software libres educativos, que sirva de respaldo al desarrollo de las actividades curriculares.</li>
+    <li>Generar estadísticas a partir del uso y desempeño de la plataforma para  determinar la usabilidad y rendimiento de ésta.</li>    
+</ul>

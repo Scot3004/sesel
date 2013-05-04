@@ -1,19 +1,19 @@
 <?php
-	require_once "includes/config.php";
-	require_once "includes/helpers.php";
-	render('_header',array('title'=>"Registro de usuario"))
+    require_once "includes/config.php";
+    require_once "includes/helpers.php";
+    render('_header',array('title'=>"Registro de usuario"))
 ?>
-	<script src="assets/js/tienda.js"></script>
-	<link rel="stylesheet" type="text/css" href="assets/css/jquery.mobile.datebox.min.css">
-	<script type='text/javascript' src="assets/js/datebox.js"></script>
-	<script type='text/javascript'>//<![CDATA[ 
-		$(window).load(function(){
-			$('#fnacimiento').live('click', function() {
-				$('#fnacimiento').datebox('open');
-			});
-		});//]]>  
-	</script>
-<form action="#" data-ajax="false" method="post" >
+    <script src="assets/js/tienda.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mobile.datebox.min.css">
+    <script type='text/javascript' src="assets/js/datebox.js"></script>
+    <script type='text/javascript'>//<![CDATA[ 
+        $(window).load(function(){
+            $('#fnacimiento').live('click', function() {
+                    $('#fnacimiento').datebox('open');
+            });
+        });//]]>  
+    </script>
+    <form action="#" data-ajax="false" method="post" >
 	<label for="doc">Documento Identidad</label>
 	<input name="doc" id="doc" placeholder="" value="" type="text" required/>
 

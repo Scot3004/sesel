@@ -2,12 +2,14 @@
 
 session_start();
 
-require_once "includes/principal.php";
+require_once "principal.php";
 
 try {
-	if($_GET['usuarios']){
+	if(isset($_GET['usuarios'])){
 		$c = new ControladorUsuario();
-	} else if($_GET['software']){
+	} else if(isset($_GET['lista'])){
+		$c = new ControladorListado();
+	} else if(isset($_GET['software'])){
 		$c = new ControladorSoftware();
 	} else if(empty($_GET)){
 		$c = new HomeController();

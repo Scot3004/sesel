@@ -7,7 +7,7 @@
         <?php render($products) ?>
     </ul>
 </div>
-
+s
 <div class="leftColumn">
     <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b" data-filter="true" data-filter-placeholder="Buscar Categorias">
         <li data-role="list-divider">Categorias</li>

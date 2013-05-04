@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Lista>
+  <Software>
+    <Titulo>DoPhys</Titulo>
+    <Descripcion>Herramientas para experimentar eventos fisicos</Descripcion>
+    <Version>3.0.1</Version>
+    <Categoria>Fisica</Categoria>
+    <Autor>Dito</Autor>
+  </Software> 
+  <Software>
+    <Titulo>OpenProyect</Titulo>
+    <Descripcion>Herramientas para crear diagramas de gantt</Descripcion>
+    <Version>5.0.1</Version>
+    <Categoria>Proyecto</Categoria>
+    <Autor>Edward</Autor>
+  </Software>
+   <Software>
+    <Titulo>Mathephun</Titulo>
+    <Descripcion>Con esta herramienta se pueden probar mutliples ecuaciones diferenciales</Descripcion>
+    <Version>9.2.0</Version>
+    <Categoria>Matematicas</Categoria>
+    <Autor>Sergio</Autor>
+  </Software>
+     <Software>
+    <Titulo>Mathephun</Titulo>
+    <Descripcion>Con esta herramienta se pueden probar mutliples ecuaciones diferenciales</Descripcion>
+    <Version>9.2.0</Version>
+    <Categoria>Matematicas</Categoria>
+    <Autor>Jorge</Autor>
+  </Software>
+     <Software>
+    <Titulo>Mathephun</Titulo>
+    <Descripcion>Con esta herramienta se pueden probar mutliples ecuaciones diferenciales</Descripcion>
+    <Version>9.2.0</Version>
+    <Categoria>Matematicas</Categoria>
+    <Autor>Edward</Autor>
+  </Software>
+     <Software>
+    <Titulo>Matdsfs</Titulo>
+    <Descripcion>Con esta herramienta se pueden probar mutliples ecuaciones diferenciales</Descripcion>
+    <Version>9.2.0</Version>
+    <Categoria>Matematicas</Categoria>
+    <Autor>Edward</Autor>
+  </Software>
+     <Software>
+    <Titulo>Mathsdfsn</Titulo>
+    <Descripcion>Con esta herramienta se pueden probar mutliples ecuaciones diferenciales</Descripcion>
+    <Version>9.2.0</Version>
+    <Categoria>Matematicas</Categoria>
+    <Autor>Edward</Autor>
+  </Software>
+     <Software>
+    <Titulo>Matsdfsdf</Titulo>
+    <Descripcion>Con esta herramienta se pueden probar mutliples ecuaciones diferenciales</Descripcion>
+    <Version>9.2.0</Version>
+    <Categoria>Matematicas</Categoria>
+    <Autor>Edward</Autor>
+  </Software>
+     <Software>
+    <Titulo>Mathsdn</Titulo>
+    <Descripcion>Con esta herramienta se pueden probar mutliples ecuaciones diferenciales</Descripcion>
+    <Version>9.2.0</Version>
+    <Categoria>Matematicas</Categoria>
+    <Autor>Edward</Autor>
+  </Software>
+     <Software>
+    <Titulo>Mathepsfgrun</Titulo>
+    <Descripcion>Con esta herramienta se pueden probar mutliples ecuaciones diferenciales</Descripcion>
+    <Version>9.2.0</Version>
+    <Categoria>Matematicas</Categoria>
+    <Autor>Edward</Autor>
+  </Software>
+</Lista>
+

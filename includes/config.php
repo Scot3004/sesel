@@ -21,5 +21,4 @@ $defaultTitle = 'Tienda Online';
 $defaultFooter = 'Apoyo Libre
 	<a href="http://scot3004.nixiweb.com">Scot3004</a>
 ';
-$base_dir = "/scot3004/sesel/"
-?>
+$base_dir = "/scot3004/sesel/";
