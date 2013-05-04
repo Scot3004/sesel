@@ -11,8 +11,3 @@ require_once "includes/controladores/controlador.listado.php";
 require_once "includes/controladores/array2xml.class.php";
 // This will allow the browser to cache the pages of the store.
 
-//header('Cache-Control: max-age=3600, public');
-header('Cache-Control: max-age=0, public');
-header('Pragma: cache');
-header("Last-Modified: ".gmdate("D, d M Y H:i:s",time())." GMT");
-header("Expires: ".gmdate("D, d M Y H:i:s",time()+3600)." GMT");

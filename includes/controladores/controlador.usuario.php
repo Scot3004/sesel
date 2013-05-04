@@ -69,6 +69,7 @@ public function login(){
     public function handleRequest(){
         /*if($_GET["usuarios"]=="buscar"){
             render('home', array(
+                    
                     'title'		=> 'Registro de Usuarios',
                     'redir'		=> $_GET["usuarios"],
                     'mensaje'	=> 'Bienvenido'
@@ -83,21 +84,7 @@ public function login(){
             $this->salir();
             return;
         } else if($_GET["usuarios"]=="registro"){
-            //aca se valida que solo el admin ingrese
-            if($_SESSION['tipo']=="Administrador"){
-                render('registro', array(
-                        'title'	=> 'Registro de Usuarios',
-                        'mensaje'	=> 'Bienvenido'
-                ));	
-                return;	
-            }else{
-                render('login',array(
-                        'title'	=> 'Inicio de Sesi&oacute;n',
-                        'redir'	=> 'usuarios=registro',
-                        'mensaje'	=> 'Bienvenido, Solo el administrador está autorizado a registrar usuarios'
-                ));
-                return;
-            }
+            $this->generarFormRegistro();
         }else{
             render('login',array(
                 'title'		=> 'Inicio de Sesi&oacute;n',
@@ -107,4 +94,32 @@ public function login(){
             return;
         }		
     }
+    public function generarFormRegistro(){
+        //aca se valida que solo el admin ingrese
+        if(isset($_SESSION['tipo'])){
+            if($_SESSION['tipo']=="Administrador"){
+                $usuario= new Usuario();
+                if($_REQUEST["id"]){
+                    //la consulta para cargar los datos del usuario
+                    //$usuario=
+
+                }
+                render('registro', array(
+                    'title'     => 'Registro de Usuarios',
+                    'mensaje'   => 'Bienvenido',
+                    'admin'     => $_SESSION["tipo"],
+                    'usuario'   => $usuario
+                ));	
+                return;
+            }
+        }else{
+            render('login',array(
+                'title'	=> 'Inicio de Sesi&oacute;n',
+                'redir'	=> 'usuarios=registro',
+                'mensaje'	=> 'Bienvenido, Este es un espacio para usuarios registrados'
+            ));
+            return;
+        }
+    }
 }
+

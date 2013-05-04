@@ -3,7 +3,7 @@
 class HomeController{
     public function handleRequest(){
         render('home',array(
-            'title'	=> 'Bienvenido',
+            'title'	=> 'Bienvenido a SESEL',
             'content'	=> "info",
             'fecha'     => $sfevento
         ));

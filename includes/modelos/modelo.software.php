@@ -32,7 +32,7 @@
              WHERE a.nombre = :asignatura");
         }else if($arr['docente']){
             throw new Exception("Propiedad en implementación!");
-            //aca va una consulta que haga desde software hasta asignatura
+            //aca va una consulta que haga desde software hasta el docente
             //se cataloga el software segun lo que se ha recomendado
             $st = $db->prepare("SELECT * FROM Software s 
              inner join Recomendacion r on s.idSoftware=r.Software_idSoftware
