@@ -1,25 +1,32 @@
 <?php
+
 class Usuario{	
     public static function buscar($arr = array()){
         global $db;
         if(empty($arr)){
             //esta busca todos los usuarios
-            $st = $db->prepare("SELECT * FROM Usuario");
+            $st = $db->prepare("SELECT identificacion, nombres, apellidos, direccion, telefono, email, nick, sexo FROM Usuario");
+        }		
+        $st->execute($arr);
+        return $st->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function buscarUsuario($arr = array()){
+        global $db;
+        if(empty($arr)){
+            throw new Exception("No se ha especificado un patrón de busqueda");          
         }else if($arr['nick']){
             //esta busca un usuario con determinado nick
-            $st = $db->prepare("SELECT * FROM Usuario WHERE nick=:nick");
-        }
-        else if($arr['identificacion']){
+            $st = $db->prepare("select * from usuario where nick=:nick");                
+        }else if($arr['identificacion']){
             //esta busca un usuario segun su identificacion
             $st = $db->prepare("SELECT * FROM Usuario WHERE docID=:identificacion");
         }
-        else{
-            throw new Exception("Propiedad No Soportada!");
-        }		
         $st->execute($arr);
-        return $st->fetchAll(PDO::FETCH_CLASS, "Usuario");
+        return $st->fetch(PDO::FETCH_OBJ);
+        //throw new Exception("Error no especificado en el modelo de usuario");
     }
-
+    
     public static function login($arr = array()){
         global $db;
         if(empty($arr)){

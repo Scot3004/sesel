@@ -3,20 +3,20 @@
 class ControladorUsuario{
     public static function registrar() {
         if($_POST["clave"]==$_POST["rclave"]) {
-                if(!empty($_POST)) {
-                    Usuario::registrar(array(
-                        ":doc" => $_POST["doc"],
-                        ":nombre" => $_POST["nombre"], 
-                        ":apellido" => $_POST["apellido"],  
-                        ":direccion" => $_POST["direccion"], 					
-                        ":telefono" => $_POST["telefono"], 
-                        ":email" => $_POST["email"], 
-                        ":genero" => $_POST["genero"], 
-                        ":fnacimiento" => $_POST["fnacimiento"], 
-                        ":nick" => $_POST["nick"], 
-                        ":clave" => $_POST["clave"]));
-                    }
-                header("Location:./");
+            if(!empty($_POST)) {
+                Usuario::registrar(array(
+                    ":doc" => $_POST["doc"],
+                    ":nombre" => $_POST["nombre"], 
+                    ":apellido" => $_POST["apellido"],  
+                    ":direccion" => $_POST["direccion"], 					
+                    ":telefono" => $_POST["telefono"], 
+                    ":email" => $_POST["email"], 
+                    ":genero" => $_POST["genero"], 
+                    ":fnacimiento" => $_POST["fnacimiento"], 
+                    ":nick" => $_POST["nick"], 
+                    ":clave" => $_POST["clave"]));
+                }
+            header("Location:./");
         } else { 
                 echo "No coinciden las claves";
         }
@@ -30,7 +30,7 @@ public function login(){
         if($logged){
             $_SESSION['nick']=$_POST['nick'];
             $_SESSION['tipo']=$logged; 
-            //echo '<meta http-equiv="Refresh" content="1;url=?'.$_REQUEST["usuarios"].'">';
+            echo '<meta http-equiv="Refresh" content="1;url=?'.$_REQUEST["usuarios"].'">';
         }else{
             render('login',array(
                     'title'		=> 'Inicio de Sesi&oacute;n',
@@ -64,17 +64,12 @@ public function login(){
         // Finalmente, destruir la sesión.
         session_destroy();
         session_unset();
+        echo "Cerrando sesion...";
+        echo '<meta http-equiv="Refresh" content="1;url=./">';
     }
 
     public function handleRequest(){
-        /*if($_GET["usuarios"]=="buscar"){
-            render('home', array(
-                    
-                    'title'		=> 'Registro de Usuarios',
-                    'redir'		=> $_GET["usuarios"],
-                    'mensaje'	=> 'Bienvenido'
-            ));
-        } else */if($_POST["nombre"]){
+        if($_POST["nombre"]){
             $this->registrar();
             return;
         } else if($_POST["nick"]){
@@ -83,8 +78,14 @@ public function login(){
         } else if($_GET["usuarios"]=="salir"){
             $this->salir();
             return;
-        } else if($_GET["usuarios"]=="registro"){
+        } else if($_REQUEST["usuarios"]=="registro"){
             $this->generarFormRegistro();
+        }else if($_GET["usuarios"]=="buscar"){
+            render('usuarios', array(                    
+                'title'     => 'Lista de Usuarios',		
+                'usuarios'  => Usuario::buscar(),
+                'mensaje'   => 'Bienvenido'
+            ));
         }else{
             render('login',array(
                 'title'		=> 'Inicio de Sesi&oacute;n',

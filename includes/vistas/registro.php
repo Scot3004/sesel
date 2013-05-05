@@ -18,7 +18,7 @@
 	<input name="doc" id="doc" placeholder="" value="" type="text" required/>
 
 	<label for="nombre">Nombres</label>
-	<input name="nombre" id="nombre" placeholder="" value="" type="text" required/>
+	<input name="nombre" id="nombre" placeholder="" value="<?php echo $usuario->nombre ?>" type="text" required/>
 	
 	<label for="apellido">Apellidos</label>
 	<input name="apellido" id="apellido" placeholder="" value="" type="text" required/>
