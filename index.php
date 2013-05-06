@@ -11,6 +11,10 @@ try {
 		$c = new ControladorListado();
 	} else if(isset($_GET['software'])){
 		$c = new ControladorSoftware();
+	} else if(isset($_GET['asignatura'])){
+		$c = new ControladorAsignatura();
+	} else if(isset($_GET['docente'])){
+		$c = new ControladorDocente();
 	} else if(empty($_GET)){
 		$c = new HomeController();
 	} else {

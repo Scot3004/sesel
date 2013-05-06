@@ -8,7 +8,7 @@ class Asignatura{
 		an array of Category objects.
 	*/
 	
-	public static function find($arr = array()){
+	public static function buscar($arr = array()){
 		global $db;
 		
 		if(empty($arr)){
@@ -24,6 +24,6 @@ class Asignatura{
 		$st->execute($arr);
 		
 		// Returns an array of Category objects:
-		return $st->fetchAll(PDO::FETCH_CLASS, "Asignatura");
+		return $st->fetchAll(PDO::FETCH_ASSOC);
 	}
 }
