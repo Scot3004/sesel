@@ -9,5 +9,6 @@ require_once "includes/controladores/controlador.usuario.php";
 require_once "includes/controladores/controlador.software.php";
 require_once "includes/controladores/controlador.listado.php";
 require_once "includes/controladores/array2xml.class.php";
+require_once "includes/controladores/aidan.php";
 // This will allow the browser to cache the pages of the store.
 

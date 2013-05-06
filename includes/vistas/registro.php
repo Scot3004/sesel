@@ -1,6 +1,4 @@
 <?php
-    require_once "includes/config.php";
-    require_once "includes/helpers.php";
     render('_header',array('title'=>"Registro de usuario"));
 ?>
     <script src="assets/js/tienda.js"></script>

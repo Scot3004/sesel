@@ -18,7 +18,7 @@ class ControladorUsuario{
                 }
             header("Location:./");
         } else { 
-                echo "No coinciden las claves";
+            echo "No coinciden las claves";
         }
 }
 
@@ -33,11 +33,11 @@ public function login(){
             echo '<meta http-equiv="Refresh" content="1;url=?'.$_REQUEST["usuarios"].'">';
         }else{
             render('login',array(
-                    'title'		=> 'Inicio de Sesi&oacute;n',
-                    'redir'		=> $_REQUEST["usuarios"],
-                    'mensaje'	=> 'Bienvenido <br/> 
-                        Has ingresado un usuario o contrase&ntilde;a no valido'
-                        .$logged
+                'title'		=> 'Inicio de Sesi&oacute;n',
+                'redir'		=> $_REQUEST["usuarios"],
+                'mensaje'	=> 'Bienvenido <br/> 
+                    Has ingresado un usuario o contrase&ntilde;a no valido'
+                    .$logged
             ));
         }
     }
@@ -81,9 +81,10 @@ public function login(){
         } else if($_REQUEST["usuarios"]=="registro"){
             $this->generarFormRegistro();
         }else if($_GET["usuarios"]=="buscar"){
+            $tblUsuarios=  aidan::array2table(Usuario::buscar());
             render('usuarios', array(                    
                 'title'     => 'Lista de Usuarios',		
-                'usuarios'  => Usuario::buscar(),
+                'usuarios'  => $tblUsuarios,
                 'mensaje'   => 'Bienvenido'
             ));
         }else{
