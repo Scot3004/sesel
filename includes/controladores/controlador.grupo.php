@@ -10,14 +10,15 @@
  *
  * @author scot3004
  */
-class ControladorAsignatura {
+class ControladorGrupo {
     public function handleRequest() {
             render('array2table', array(                    
                 'title'     => 'Lista de Usuarios',		
-                'array'  => Asignatura::buscar(),
+                'array'  => Grupo::buscar(),
                 'mensaje'   => 'Bienvenido'
             ));
     }
 }
 
 ?>
+

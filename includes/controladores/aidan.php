@@ -21,13 +21,13 @@ class aidan{
        }
 
        // Start the table
-       $table = "<table>\n";
+       $table = '<table data-role="table" id="arraytable" data-mode="reflow" class="ui-responsive tablereflow">';
 
        // The header
-       $table .= "\t<tr>";
+       $table .= "\n\t<tr>";
        // Take the keys from the first row as the headings
        foreach (array_keys($array[0]) as $heading) {
-           $table .= '<th>' . $heading . '</th>';
+           $table .= '<th class="ui-table-cell-label">' . $heading . '</th>';
        }
        $table .= "</tr>\n";
 

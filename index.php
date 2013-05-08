@@ -15,7 +15,9 @@ try {
 		$c = new ControladorAsignatura();
 	} else if(isset($_GET['docente'])){
 		$c = new ControladorDocente();
-	} else if(empty($_GET)){
+	} else if(isset($_GET['grupo'])){
+                $c = new ControladorGrupo();
+	}  else if(empty($_GET)){
 		$c = new HomeController();
 	} else {
             throw new Exception('Error en la Pagina!');

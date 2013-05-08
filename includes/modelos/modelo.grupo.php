@@ -1,6 +1,6 @@
 <?php
 
-class Docente{
+class Grupo{
 	
 	/*
 		The find static method selects categories

@@ -20,6 +20,10 @@
 	height: 80px;
 }
 
+table{
+    width: 100%;
+}
+
 
 @media all and (min-width: 650px){
 
@@ -34,4 +38,22 @@
 		float:left;
 	}
 
+}
+
+@media all and ( min-width: 40em ) {
+	/* Show the table header rows and set all cells to display: table-cell */
+	.tablereflow td,
+	.tablereflow th,
+	.tablereflow tbody th,
+	.tablereflow tbody td,
+	.tablereflow thead td,
+	.tablereflow thead th {
+		display: table-cell;
+		margin: 0;
+	}
+	/* Hide the labels in each cell */
+	.tablereflow td .ui-table-cell-label,
+	.tablereflow th .ui-table-cell-label {
+		display: none;
+	}
 }

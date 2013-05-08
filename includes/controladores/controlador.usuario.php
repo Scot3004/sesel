@@ -81,10 +81,9 @@ public function login(){
         } else if($_REQUEST["usuarios"]=="registro"){
             $this->generarFormRegistro();
         }else if($_GET["usuarios"]=="buscar"){
-            $tblUsuarios=  aidan::array2table(Usuario::buscar());
-            render('usuarios', array(                    
+            render('array2table', array(                    
                 'title'     => 'Lista de Usuarios',		
-                'usuarios'  => $tblUsuarios,
+                'array'  => Usuario::buscar(),
                 'mensaje'   => 'Bienvenido'
             ));
         }else{

@@ -8,13 +8,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     
-    <link rel="stylesheet" href="assets/css/jquery.mobile-1.2.0.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.3.1.min.css" />
     <link rel="stylesheet" href="assets/css/osm/default/style.css" type="text/css">
     
     
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script type="text/javascript" src="assets/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.mobile-1.2.0.min.js"></script>    
+    <script type="text/javascript" src="assets/js/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.mobile-1.3.1.min.js"></script>    
     <script type="text/javascript">
         $(document).bind("mobileinit", function () {
         $.mobile.ajaxEnabled = false;

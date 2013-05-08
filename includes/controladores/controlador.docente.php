@@ -12,10 +12,9 @@
  */
 class ControladorDocente {
     public function handleRequest() {
-        $tblUsuarios=  aidan::array2table(Docente::buscar());
-            render('usuarios', array(                    
+            render('array2table', array(                    
                 'title'     => 'Lista de Usuarios',		
-                'usuarios'  => $tblUsuarios,
+                'array'  => Docente::buscar(),
                 'mensaje'   => 'Bienvenido'
             ));
     }
