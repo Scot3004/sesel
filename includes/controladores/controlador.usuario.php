@@ -40,6 +40,7 @@ public function login(){
                     .$logged
             ));
         }
+        return $logged;
     }
 
     public function salir(){

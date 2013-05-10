@@ -14,7 +14,7 @@ class ControladorAsignatura {
     public function handleRequest() {
             render('array2table', array(                    
                 'title'     => 'Lista de Usuarios',		
-                'array'  => Asignatura::buscar(),
+                'array'     => Asignatura::buscar(),
                 'mensaje'   => 'Bienvenido'
             ));
     }
