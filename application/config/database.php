@@ -66,10 +66,31 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 $db['default']['failover'] = array();
 
-$db_host = 'localhost';
-$db_user = 'sesel';
-$db_pass = 'tRcrwxq7Pe9MmUxz';
-$db_name = 'sesel';
+
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
+/*
+try {
+    $db_host = $db['default']['hostname'];
+    $db_name = $db['default']['database'];
+	$dbp = new PDO(
+	  "mysql:host=$db_host;dbname=$db_name", 
+	  $db['default']['hostname'] , 
+	  $db['default']['password'], 
+	  array(
+		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+		PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+	  )
+	);
+    
+    
+	$dbp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db['default']['pdo']=$dbp;
+}
+catch(PDOException $e) {
+	error_log($e->getMessage());
+	die("Problemas en la base de datos<br/>".$e->getMessage());
+}
+
+*/

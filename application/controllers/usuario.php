@@ -1,27 +1,41 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Usuario extends CI_Controller {
+    public function __construct()
+	{
+		parent::__construct();
+		
+		$this->load->library('mobile');
+                $this->load->model('mUsuario');
+	} 
+        
+   function render($view, $params=array()){
+       $this->mobile->header('Bienvenido a Sesel', 'b')->button('welcome/help', 'Help', 'info');
+        $this->mobile->navbar(array(
+                'usuario' 	=> array('text' => 'Home', 	'icon' => 'home'),
+                'admin'	=> array('text' => 'Admin', 	'icon' => 'gear')
+        ), 'b');
+        $this->mobile->footer('Sesel Es Software Educativo Libre', 'b');
+        $this->mobile->view($view, $params);
+   }
     
-    function index()
+   function index()
     {
-            $this->_example_output((object)array('output' => '' , 'js_files' => array() , 'css_files' => array()));
-    }
-    function _example_output($output = null)
-    {
-            $this->load->view('main.php',$output);	
+        $this->render('login');
     }
     
     public function login(){          
-        $logged=Usuario::login(array(
-            'nick'		=> $_POST['nick'],
-            'clave'		=> $_POST['clave']
+        print_r($_POST);
+        $logged=$this->mUsuario->login(array(
+            'nick'  => $_POST['nick'],
+            'clave' => $_POST['clave']
         ));                
         if($logged){
             $_SESSION['nick']=$_POST['nick'];
             $_SESSION['tipo']=$logged; 
             echo '<meta http-equiv="Refresh" content="1;url=?'.$_REQUEST["usuarios"].'">';
         }else{
-            render('login',array(
+            $this->render('login',array(
                 'title'		=> 'Inicio de Sesi&oacute;n',
                 'redir'		=> $_REQUEST["usuarios"],
                 'mensaje'	=> 'Bienvenido <br/> 
@@ -59,9 +73,11 @@ class Usuario extends CI_Controller {
     }
 
     public function buscar(){
-        render('array2table', array(                    
+        $usuarios=$this->mUsuario->buscar();
+        $this->render('array2table', array(                    
                 'title'     => 'Lista de Usuarios',		
-                'array'  => Usuario::buscar(),
+                'array'  => $usuarios,
+                'table' => "",
                 'mensaje'   => 'Bienvenido'
             ));
     }
@@ -76,7 +92,7 @@ class Usuario extends CI_Controller {
                     //$usuario=
 
                 }
-                render('registro', array(
+                $this->render('registro', array(
                     'title'     => 'Registro de Usuarios',
                     'mensaje'   => 'Bienvenido',
                     'admin'     => $_SESSION["tipo"],
@@ -85,7 +101,7 @@ class Usuario extends CI_Controller {
                 return;
             }
         }else{
-            render('login',array(
+            $this->render('login',array(
                 'title'	=> 'Inicio de Sesi&oacute;n',
                 'redir'	=> 'usuarios=registro',
                 'mensaje'	=> 'Bienvenido, Este es un espacio para usuarios registrados'

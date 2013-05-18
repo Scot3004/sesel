@@ -1,5 +1,4 @@
 <?php
-render('_header',array('title'=>$title));
 /** Based on
      * Translate a result array into a HTML table
      *
@@ -20,7 +19,6 @@ if(!is_array($array)){
        $array = array($array);
     }
 ?>
-<input type="text" id="filter" placeholder="Filtrar" onkeyup="filtrar()">
 <table data-role='table' data-mode="reflow" class="ui-responsive table-stroke" id="datos">    
     <thead>
         <tr>
@@ -44,8 +42,7 @@ if(!is_array($array)){
                 if (is_object($cell)) { $cell = (array) $cell; }
 
                 $table .= (strlen($cell) > 0) ?
-                htmlspecialchars((string) $cell) :
-                $null;
+                htmlspecialchars((string) $cell) :null;
 
                 $table .= '</td>';
            }
@@ -60,5 +57,4 @@ if(!is_array($array)){
     
 <?php
 }
-render('_footer');
 ?>

@@ -1,9 +1,6 @@
-<?php
-render('_header',array('title'=>$title))?>
 <section class="leftColumn">
-    <?php render($menu) ?>
+    <?php require './info.php'; ?>
 </section>
 <section class="rightColumn">
-    <?php render($content) ?>
+    <?php echo $content;?>
 </section>
-<?php render('_footer')?>

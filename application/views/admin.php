@@ -28,8 +28,9 @@ a:hover
 </head>
 <body>
 	<nav>
-            <a href='<?php echo site_url('main/software_management')?>' >Software</a> 	
-            <a href='<?php echo site_url('main/subject_management')?>' >Asignatura</a> 	
+            <a href='<?php echo site_url('admin/software_management')?>' >Software</a> 	
+            <a href='<?php echo site_url('admin/subject_management')?>' >Asignatura</a> 
+            <a href='<?php echo site_url('admin/user_management')?>' >Usuarios</a> 
 	</nav>
 	<div style='height:20px;'></div>  
     <div>
