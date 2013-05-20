@@ -1,5 +1,3 @@
-<?php
-render('_header',array('title'=>$software->nombre))?>
 <div class="rightColumn">
 
 Nombre: <?php echo $software->nombre;?><br/>
@@ -9,5 +7,3 @@ Descripcion: <?php echo $software->descripcion;?><br/>
 </div>
 <div class="leftColumn">
 	<img src="assets/img/<?php echo $software->idSoftware ?>/cab.jpg" alt="<?php echo $software->nombre ?>" />
-<?php render('_footer');
-?>

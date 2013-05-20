@@ -18,7 +18,7 @@ $config['mobile']['ajax_loaded']	= TRUE;
 
 $config['mobile']['page_transitions'] = 'slide'; /* if ajax_loaded = TRUE */
 
-$config['mobile']['fixed_toolbars'] = FALSE;
+$config['mobile']['fixed_toolbars'] = TRUE;
 
-$config['mobile']['backbtn_auto']	= FALSE;
+$config['mobile']['backbtn_auto']	= TRUE;
 $config['mobile']['backbtn_text']	= 'Back';
