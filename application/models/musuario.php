@@ -36,8 +36,12 @@ class mUsuario extends CI_Model{
             return false;
         }else{
             //
-            $st = $this->db->query("SELECT tipo FROM Usuario WHERE nick=:nick? AND clave=sha1(?)", $arr);
-            return $st->tipo;
+            $this->db->select('tipo');
+            $this->db->where($arr); 
+            $query = $this->db->get('Usuario');
+            //$st = $this->db->query("SELECT tipo FROM Usuario WHERE nick=? AND clave=sha1(?)", $arr);
+            $row = $query->row();
+            return $row->tipo;
         }
     }
     public function registrar($arr = array()){

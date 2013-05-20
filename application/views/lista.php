@@ -1,5 +1,3 @@
-<?php render('_header',array('title'=>"Listado de Software"));
-?>
     <script type="text/javascript" language="javascript">
     $(document).ready(function(){
         $.ajax({
@@ -35,5 +33,3 @@
 <p>Listado de Herramientas Libres</p>		
 <ul data-role="listview" data-inset="true" data-filter="true" id="buscar" data-filter-placeholder="Filtrar Software">
 </ul>		
-
-<?php render('_footer')?>
