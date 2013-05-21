@@ -1,22 +1,22 @@
-var searchOnTable = function() {
-                    var table = $('#datos');
-                    var value = this.value;
-                    table.find('tr').each(function(index, row) {
-                            var allCells = $(row).find('td.index');
-                            if(allCells.length > 0) {
-                                    var found = false;
-                                    allCells.each(function(index, td) {
-                                            var regExp = new RegExp(value, 'i');
-                                            if(regExp.test($(td).text())) {
-                                                    found = true;
-                                                    return false;
-                                            }
-                                    });
-                                    if (found) $(row).show();
-                                    else $(row).hide();
-                            }
-                    });
-            };
+ function filtrar() {
+        var table = $('#datos');
+        var value = this.value;
+        table.find('tr').each(function(index, row) {
+                var allCells = $(row).find('td.index');
+                if(allCells.length > 0) {
+                        var found = false;
+                        allCells.each(function(index, td) {
+                                var regExp = new RegExp(value, 'i');
+                                if(regExp.test($(td).text())) {
+                                        found = true;
+                                        return false;
+                                }
+                        });
+                        if (found) $(row).show();
+                        else $(row).hide();
+                }
+        });
+};
             jQuery.fn.toCSV = function() {
             var data = $(this).first(); //Only one table
             var csvData = [];
@@ -49,7 +49,3 @@ var searchOnTable = function() {
             $("#data").val(output);
              
           }
-        $(function(){
-                $('#filter').keyup(searchOnTable);
-        })
-

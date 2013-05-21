@@ -1,5 +1,7 @@
-RewriteEngine On
-RewriteRule  ^([a-zA-Z]+)/^([a-zA-Z]+) index.php [L,NC]
-ErrorDocument 404 /tiendesita/?error=404
-ErrorDocument 403 /tiendesita/?error=403
-Options -Indexes
+ RewriteEngine On
+ RewriteBase /sesel
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond $1 !^(index\.php|images|robots\.txt|css|docs|js|system)
+  RewriteRule ^(.*)$ /sesel/index.php?/$1 [L]

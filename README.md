@@ -9,7 +9,7 @@ JUSTIFICACIÓN
 =====
 Es importante reforzar en la comunidad educativa valores como la responsabilidad, el respeto, la solidaridad, la democracia y la honestidad que, al usar programas de manera ilegal, (violando los términos de las licencias de software) están dejando a un lado. Además, para incentivar el desarrollo de la programación desde edades tempranas, ya que actualmente en los colegios no se profundiza y en la mayoría de los casos ni siquiera se llega a enseñar acerca de cómo están hechos los programas que utilizan a diario (por ser software privativos principalmente) y muchos de éstos niños se muestran muy interesados y es bueno que conozcan el funcionamiento de sus herramientas, puede que a partir de ellas surjan proyectos de emprendimiento, los cuales serian legales, ya que la licencia de la herramienta se lo permite al modificar el software y presentarlo como fork del proyecto original.
 
-
+ 
 OBJETIVOS
 =====
 Para determinar las herramientas a desarrollar en el proyecto de investigación necesitamos establecer los objetivos que especificaran su finalidad.
@@ -29,9 +29,9 @@ Objetivos específicos:
 - [x] Modelo Orientado a Objetos
 - [x] Login
 - [x] Cerrar Sesión
-- [x] Desarrollar XML
-- [] Realizar busquedas de software
-- [] segun asignaturas    
-- [] segun docentes
+- [ ] -Desarrollar XML-
+- [+] Realizar busquedas de software
+- [+] segun asignaturas    
+- [+] segun docentes
 
     

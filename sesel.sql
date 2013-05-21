@@ -27,7 +27,17 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish_ci;
 
+DELIMITER ;;
 
+CREATE TRIGGER `Usuario_bi` BEFORE INSERT ON `Usuario` FOR EACH ROW
+set new.clave=sha1(new.clave);;
+
+CREATE TRIGGER `Usuario_bu` BEFORE UPDATE ON `Usuario` FOR EACH ROW
+IF NEW.clave <> OLD.clave THEN
+set new.clave= sha1(new.clave);
+end if;;
+
+DELIMITER ;
 -- -----------------------------------------------------
 -- Table `sesel`.`Asignatura`
 -- -----------------------------------------------------
