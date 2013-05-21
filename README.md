@@ -27,8 +27,8 @@ Objetivos específicos:
  Desarrollo:
 ======
 - [x] Modelo Orientado a Objetos
-- [ ] Login
-- [ ] Cerrar Sesión
+- [x] Login
+- [x] Cerrar Sesión
 - [ ] -Desarrollar XML-
 - [+] Realizar busquedas de software
 - [+] segun asignaturas    
