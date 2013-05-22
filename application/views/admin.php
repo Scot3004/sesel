@@ -31,6 +31,9 @@ a:hover
             <a href='<?php echo site_url('admin/software_management')?>' >Software</a> 	
             <a href='<?php echo site_url('admin/subject_management')?>' >Asignatura</a> 
             <a href='<?php echo site_url('admin/user_management')?>' >Usuarios</a> 
+            <a href='<?php echo site_url('admin/master_management')?>' >Docente</a> 
+            <a href='<?php echo site_url('admin/recomend_management')?>' >Recomendaciones</a> 
+            <a href='<?php echo site_url('admin/group_management')?>' >Grupos</a> 
 	</nav>
 	<div style='height:20px;'></div>  
     <div>

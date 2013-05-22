@@ -7,21 +7,15 @@ class Usuario extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('mobile');
         $this->load->model('mUsuario');
         $this->load->helper('form');
         $this->load->library('form_validation');
     }
 
-    function render($view, $params = array()) {
-        $this->mobile->header('Bienvenido a Sesel', 'b')->button('welcome/help', 'Help', 'info');
-        $this->mobile->navbar(array(
-        'usuario' => array('text' => 'Home', 'icon' => 'home'),
-        'admin' => array('text' => 'Admin', 'icon' => 'gear')
-        ), 'b');
-        $this->mobile->footer('Sesel Es Software Educativo Libre', 'b');
-        $this->mobile->view($view, $params);
-        //$this->load->view($view, $params);
+    private function render($view, $params = array(), $titulo = "Control de Usuarios") {
+        $this->load->view('mobile', array('view' => $view,
+            'titulo' => $titulo,
+            'params' => $params));
     }
 
     function index() {
@@ -36,10 +30,10 @@ class Usuario extends CI_Controller {
 
     public function login() {
         $tipo = null;
-        $this->form_validation->set_rules('nick', 'Usuario', 'required|min_lenght[5]|max_lenght[20]');
+        $this->form_validation->set_rules('nick', 'Usuario', 'required'); //|min_lenght[3]|max_lenght[20]');
         $this->form_validation->set_rules('clave', 'Clave', 'required');
         if ($this->form_validation->run() == FALSE) { //si no supera las reglas de validación se recarga la vista del formulario
-            $this->load->view('login');
+            $this->render('login');
         } else {
             $tipo = $this->mUsuario->login(array('nick' => $_POST['nick'], 'clave' => sha1($_POST['clave']))); //pasamos los valores al modelo para que compruebe si existe el usuario con ese password
 
@@ -55,7 +49,7 @@ class Usuario extends CI_Controller {
                 $this->render('error', $data);
             } else {
                 // si es erroneo, devolvemos un mensaje de error
-                $this->load->view('error', array('titulo' => 'no se pudo iniciar sesi&oacute;n', 'detalle' => 'el usuario o clave no es valido'));
+                $this->render('error', array('titulo' => 'no se pudo iniciar sesi&oacute;n', 'detalle' => 'el usuario o clave no es valido'));
             }
         }
         return $tipo;
@@ -65,41 +59,38 @@ class Usuario extends CI_Controller {
         $this->session->unset_userdata('nick');
         $this->session->unset_userdata('tipo');
         //session_destroy();
-        redirect('main','refresh');
+        redirect('main', 'refresh');
     }
-    
-    public function buscar(){
-        try{
-            print_r($this->mUsuario->buscar($_POST));    
-        }  catch (Exception $e){
-            $data['titulo'] = 'Problemas al buscar datos';
-            $data['detalle'] = $e->getMessage();
-            $this->render('error', $data);
+
+    public function buscar() {
+        if ($this->session->userdata('tipo')) {
+            try {
+                print_r($this->mUsuario->buscar($_POST));
+            } catch (Exception $e) {
+                $data['titulo'] = 'Problemas al buscar datos';
+                $data['detalle'] = $e->getMessage();
+                $this->render('error', $data);
+            }
         }
     }
 
     public function registro() {
         //aca se valida que solo el admin ingrese
-        if (isset($_SESSION['tipo'])) {
-            if ($_SESSION['tipo'] == "Administrador") {
-                $usuario = new Usuario();
-                if ($_REQUEST["id"]) {
-                    $this->mUsuario->registro($_POST);
+        if ($this->session->userdata('tipo') === "Administrador") {
+            //$usuario = new Usuario();
+            if (isset($_POST["identificacion"])) {
+                $arr = $_POST;
+                if ($arr['clave'] === $arr['rclave']) {
+                    unset($arr['rclave']);
+                    unset($arr['registrar']);
+                    $this->mUsuario->registrar($arr);
+                    redirect('main', 'refresh');
                 }
-                $this->render('registro', array(
-                    'title' => 'Registro de Usuarios',
-                    'mensaje' => 'Bienvenido',
-                    'admin' => $_SESSION["tipo"],
-                    'usuario' => $usuario
-                ));
-                return;
-            }
+            } else {
+                $this->render('registro');
+            }return;
         } else {
-            $this->render('login', array(
-                'title' => 'Inicio de Sesi&oacute;n',
-                'redir' => 'usuarios=registro',
-                'mensaje' => 'Bienvenido, Este es un espacio para usuarios registrados'
-            ));
+            $this->render('login');
             return;
         }
     }

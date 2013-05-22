@@ -16,35 +16,25 @@ class Main extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public function __construct()
-    {
+    public function __construct(){
             parent::__construct();
-
             $this->load->library('mobile');
     }
  
-   function render($view, $params=array()){
-       $this->mobile->header('Bienvenido a Sesel', 'b')->button('welcome/help', 'Help', 'info');
-        $this->mobile->navbar(array(
-                'usuario' 	=> array('text' => 'Home', 	'icon' => 'home'),
-                'admin'	=> array('text' => 'Admin', 	'icon' => 'gear')
-        ), 'b');
-        $this->mobile->footer('Sesel Es Software Educativo Libre', 'b');
-        $this->mobile->view($view, $params);
-   }
+    function render($view, $params = array(), $titulo="Pagina Principal") {
+         $this->load->view('mobile', 
+                     array('view'=>$view, 
+                         'titulo'=>$titulo, 
+                         'params'=>$params));
+    }
    
     public function index(){
-            $this->mobile->header('Bienvenido a Sesel', 'b')->button('welcome/help', 'Help', 'info');
-            $this->mobile->navbar(array(
-                    'usuario' 	=> array('text' => 'Home', 		'icon' => 'home'),
-                    'admin'	=> array('text' => 'Settings', 	'icon' => 'gear', 'data-ajax'=>'false')
-            ), 'b');
-            $this->mobile->footer('Footer', 'b');
-            //$this->mobile->view('home');
-            $this->mobile->view('info');
-            //$this->mobile->view('menuadmin');
+        $this->render('info');
+    }  
+    
+    public function info(){
+        $this->render('info');
     }
-            
 }
 
 /* End of file welcome.php */

@@ -26,7 +26,7 @@ class mUsuario extends CI_Model{
             $this->db->select('tipo');
             $this->db->where($arr); 
             $query = $this->db->get('Usuario');
-            //$st = $this->db->query("SELECT tipo FROM Usuario WHERE nick=? AND clave=sha1(?)", $arr);
+            //$st = $this->db->query("SELECT tipo FROMogin Usuario WHERE nick=? AND clave=sha1(?)", $arr);
             $row = $query->row();
             if($row)
             return $row->tipo;

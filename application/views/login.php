@@ -1,5 +1,5 @@
-<?php echo validation_errors(); ?>
 <?php echo form_open('usuario/login');?>
+    <?php echo validation_errors(); ?>
     <label for="nick">Nick  </label>
     <input name="nick" id="nick" placeholder="" value="" type="text" required> 
     <br/>

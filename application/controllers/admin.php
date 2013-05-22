@@ -76,5 +76,62 @@ class Admin extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
         }
+        
+        function recomend_management()
+	{
+		try{
+			$crud = new grocery_CRUD();
+
+			$crud->set_theme('datatables');
+			$crud->set_table('Recomendacion');
+			$crud->set_subject('Recomendación');
+                        $crud->set_relation('Software_idSoftware', 'Software', 'nombre');
+                        $crud->set_relation('Grupo_idGrupo', 'Grupo', '{nivelAcademico} - {nombre}');
+                      
+			$output = $crud->render();
+			
+			$this->_example_output($output);
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+        }
+        
+        function group_management()
+	{
+		try{
+			$crud = new grocery_CRUD();
+
+			$crud->set_theme('datatables');
+			$crud->set_table('Grupo');
+			$crud->set_subject('Grupo');
+            $crud->set_relation('Docente_idDocente','Docente','idDocente');
+            $crud->set_relation('Asignatura_idAsignatura','Asignatura','{Nombre} - {Area}');
+			$output = $crud->render();
+			
+			$this->_example_output($output);
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+        }
 	
+        function master_management()
+	{
+		try{
+			$crud = new grocery_CRUD();
+
+			$crud->set_theme('datatables');
+			$crud->set_table('Docente');
+			$crud->set_subject('Docente');
+                        $crud->set_relation('idUsuario','Usuario','{nombres} {apellidos}');
+                        
+			$output = $crud->render();
+			
+			$this->_example_output($output);
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+        }
 }
