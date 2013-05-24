@@ -15,7 +15,7 @@ class mUsuario extends CI_Model{
             $this->db->select('identificacion, nombres, apellidos, direccion, telefono, email, nick, sexo');
             $this->db->where($arr); 
         }
-        return $this->db->get('Usuario');
+        return $this->db->get('usuario');
     }
     
     public function login($arr = array()){
@@ -25,8 +25,8 @@ class mUsuario extends CI_Model{
             //
             $this->db->select('tipo');
             $this->db->where($arr); 
-            $query = $this->db->get('Usuario');
-            //$st = $this->db->query("SELECT tipo FROMogin Usuario WHERE nick=? AND clave=sha1(?)", $arr);
+            $query = $this->db->get('usuario');
+            //$st = $this->db->query("SELECT tipo FROMogin usuario WHERE nick=? AND clave=sha1(?)", $arr);
             $row = $query->row();
             if($row)
             return $row->tipo;
@@ -36,7 +36,7 @@ class mUsuario extends CI_Model{
     
     public function registrar($arr = array()){
         if(!empty($arr)){           
-            $this->db->insert('Usuario', $arr); 	
+            $this->db->insert('usuario', $arr); 	
         }	
     }
 }
