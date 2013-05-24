@@ -25,7 +25,10 @@ class Programa extends CI_Controller {
         try {
             if ($this->session->userdata('tipo')) {
                 $programas = $this->mPrograma->buscar();
-                $this->render('software', array('array' => $programas));
+                $asignaturas=new stdClass();
+                $asignaturas->nombre="";
+                $asignaturas->programas=$programas;
+                $this->render('software', array('categorias' => array($asignaturas)));
             } else {
                 redirect('usuario/login', 'refresh');
             }
@@ -40,13 +43,33 @@ class Programa extends CI_Controller {
         $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
         $this->render('detallesoftware', array('software' => $programa));
     }
-    public function asignatura($id=NULL){
-        if(isset($id))
-        $programa = $this->mPrograma->buscarAsignatura(array('a.nombre' => $id));
-        else 
-            $programa = $this->mPrograma->buscarAsignatura();
-        print_r($programa);
-//$this->render('software', array('array' => $programa));
+    public function asignatura($id=null){
+        if($id!==null){
+            $programa = $this->mPrograma->buscarAsignatura(array('a.nombre' => $id));
+            $asignatura=new stdClass();
+            $asignatura->nombre=$id;
+            $asignatura->programas=$programa;
+            $asignaturas=array($asignatura);
+        }else {
+            $asignaturas=$this->mPrograma->buscar(array(),'asignatura');           
+            foreach ($asignaturas as $asignatura){
+                $asignatura->programas=$this->mPrograma->buscarAsignatura(array('a.nombre'=>$asignatura->nombre));
+            }
+            
+        }
+        $this->render('software', array('categorias' => $asignaturas));
+    }
+    public function docente($id=null){
+        if($id!==null){
+            $categorias=$this->mPrograma->buscarDocentes(array('d.idDocente' => $id));
+        }else {
+            $categorias=$this->mPrograma->buscarDocentes();         
+        }
+        foreach ($categorias as $categoria){
+            $categoria->programas=$this->mPrograma->buscarDocente(array('d.idDocente'=>$categoria->idDocente));
+        }        
+        //print_r($categorias);
+        $this->render('software', array('categorias' => $categorias));
     }
 
 }
