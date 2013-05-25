@@ -7,7 +7,7 @@ para la Institución Educativa Distrital José Martí
 del Barrio Simón Bolívar en el Distrito de Barranquilla.</p>
 <h2>Objetivos específicos:</h2>
 <ul>
-    <li>Diseñar un espacio en el que los niños y jóvenes puedan aprender acerca de alternativas de software libre.</li>
+    <li>Diseñar un espacio en el que los niños y jóvenes puedan visualizar alternativas de software libre como apoyo a su aprendizaje.</li>
     <li>Recopilar software libres educativos, que sirva de respaldo al desarrollo de las actividades curriculares.</li>
     <li>Generar estadísticas a partir del uso y desempeño de la plataforma para  determinar la usabilidad y rendimiento de ésta.</li>    
 </ul>

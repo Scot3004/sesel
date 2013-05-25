@@ -22,6 +22,10 @@ class Programa extends CI_Controller {
     }
 
     public function index() {
+        $this->render("menusoftware");
+    }
+    
+    public function listar() {
         try {
             if ($this->session->userdata('tipo')) {
                 $programas = $this->mPrograma->buscar();
@@ -43,6 +47,7 @@ class Programa extends CI_Controller {
         $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
         $this->render('detallesoftware', array('software' => $programa));
     }
+    
     public function asignatura($id=null){
         if($id!==null){
             $programa = $this->mPrograma->buscarAsignatura(array('a.nombre' => $id));

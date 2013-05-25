@@ -6,7 +6,7 @@
             <?php foreach ($categorias as $categoria): ?>
                 <li data-role="list-divider"><?php echo $categoria->nombre ?></li>
                 <?php if (empty($categoria->programas)): ?>
-                    <li>No hay programas para esta categoria</li>
+                    <li data-role="list-divider" data-theme="c">No hay programas para esta categoria</li>
                 <?php else:
                     foreach ($categoria->programas as $row):
                         ?>
