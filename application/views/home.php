@@ -1,6 +1,6 @@
 <section class="leftColumn">
-    <?php require './info.php'; ?>
+    <?php $this->load->view($left);?>
 </section>
 <section class="rightColumn">
-    <?php echo $content;?>
+    <?php $this->load->view($right);?>
 </section>

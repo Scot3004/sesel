@@ -2,7 +2,7 @@
     No se encontraron datos
 <?php else: ?>
     <div data-role="content">
-        <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+        <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a" data-filter="true" data-filter-placeholder="Filtrar Software">
             <?php foreach ($categorias as $categoria): ?>
                 <li data-role="list-divider"><?php echo $categoria->nombre ?></li>
                 <?php if (empty($categoria->programas)): ?>

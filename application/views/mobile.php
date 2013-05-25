@@ -10,7 +10,11 @@
     </head>
     <body>
         <div data-role="page" data-theme="b">
-            <div data-role="header" data-theme="b" data-position="fixed" ><h1>Sesel -> <?php echo $titulo ?></h1><a href="<?php echo site_url('main')?>" data-icon="info" title="Help" class="ui-btn-right">Help</a></div>
+            <div data-role="header" data-theme="b" data-position="fixed" >
+                <a href="#" data-role="button" data-rel="back" data-icon="arrow-l">Atras</a> 
+                <h1>Sesel -> <?php echo $titulo ?></h1>
+                <a href="<?php echo site_url('main')?>" data-icon="info" title="Help" class="ui-btn-right">Help</a>
+            </div>
             <div data-role="navbar"><ul>
                     <li><a href="<?php echo site_url('usuario')?>" data-theme="b" title="Home" data-icon="home">Home</a></li>
                     <li><a href="<?php echo site_url('admin')?>" data-theme="b" title="Admin" data-icon="grid" data-ajax="false">Admin</a></li>
