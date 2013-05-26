@@ -13,6 +13,7 @@ class Programa extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('mPrograma');
+        $this->load->model('mDocente');
     }
 
     private function render($view, $params = array(), $titulo = "Software") {
@@ -66,9 +67,9 @@ class Programa extends CI_Controller {
     }
     public function docente($id=null){
         if($id!==null){
-            $categorias=$this->mPrograma->buscarDocentes(array('d.idDocente' => $id));
+            $categorias=$this->mDocente->buscarDocentes(array('d.idDocente' => $id));
         }else {
-            $categorias=$this->mPrograma->buscarDocentes();         
+            $categorias=$this->mDocente->buscarDocentes();         
         }
         foreach ($categorias as $categoria){
             $categoria->programas=$this->mPrograma->buscarDocente(array('d.idDocente'=>$categoria->idDocente));
@@ -76,7 +77,6 @@ class Programa extends CI_Controller {
         //print_r($categorias);
         $this->render('software', array('categorias' => $categorias));
     }
-
 }
 
 ?>

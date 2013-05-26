@@ -58,8 +58,9 @@ class Usuario extends CI_Controller {
     public function salir() {
         $this->session->unset_userdata('nick');
         $this->session->unset_userdata('tipo');
-        //session_destroy();
-        redirect('main', 'refresh');
+        $data['titulo'] = "Cierre de Sesion";
+        $data['detalle'] = "Ya has finalizado sesión";
+        $this->render('error', $data);
     }
 
     public function buscar() {

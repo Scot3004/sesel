@@ -13,7 +13,7 @@
             <div data-role="header" data-theme="b" data-position="fixed" >
                 <a href="#" data-role="button" data-rel="back" data-icon="arrow-l">Atras</a> 
                 <h1>Sesel -> <?php echo $titulo ?></h1>
-                <a href="<?php echo site_url('main')?>" data-icon="info" title="Help" class="ui-btn-right">Help</a>
+                <a href="<?php echo site_url('main')?>" data-icon="info" title="Help" class="ui-btn-right">Proyecto</a>
             </div>
             <div data-role="navbar"><ul>
                     <li><a href="<?php echo site_url('usuario')?>" data-theme="b" title="Home" data-icon="home">Home</a></li>
