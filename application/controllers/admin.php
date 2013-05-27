@@ -31,7 +31,7 @@ class Admin extends CI_Controller {
         try {
             $crud = new grocery_CRUD();
 
-            $crud->set_theme('datatables');
+            //$crud->set_theme('flexygrid');
             $crud->set_table('software');
             $crud->set_subject('Software');
 
@@ -100,6 +100,7 @@ class Admin extends CI_Controller {
             $crud->set_theme('datatables');
             $crud->set_table('grupo');
             $crud->set_subject('Grupo');
+            $crud->change_field_type("clave", "password");
             $crud->set_relation('Docente_idDocente', 'docente', 'idDocente');
             $crud->set_relation('Asignatura_idAsignatura', 'asignatura', '{Nombre} - {Area}');
             $output = $crud->render();

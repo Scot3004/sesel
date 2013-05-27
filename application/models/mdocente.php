@@ -21,7 +21,7 @@ class mDocente extends CI_Model {
     }
 
     public function buscarDocentes($arr = array()) {
-        $this->db->select('concat(u.nombres, " ", u.apellidos) as nombre, d.idDocente', false);
+        $this->db->select('concat(u.nombres, " ", u.apellidos) as nombre, d.idDocente, u.identificacion, u.idUsuario, u.nick', false);
         $this->db->from('docente d', false);
         $this->db->join('usuario u', 'u.idUsuario = d.idusuario', 'INNER');
         $this->db->where($arr);
