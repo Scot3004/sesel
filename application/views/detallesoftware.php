@@ -6,4 +6,4 @@
     <p>Descripcion: <?php echo $software->descripcion; ?></p>
 </div>
 <div class="leftColumn">
-    <img src="<?php echo base_url(); ?>assets/uploads/files/<?php echo $software->idSoftware ?>/cab.jpg" alt="<?php echo $software->nombre ?>" />
+    <img widtsrc="<?php echo base_url(); ?>assets/uploads/files/<?php echo $software->idSoftware ?>/cab.jpg" alt="<?php echo $software->nombre ?>" />

@@ -17,6 +17,12 @@ CREATE TABLE `asignatura` (
   UNIQUE KEY `nombre_UNIQUE` (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO `asignatura` (`idAsignatura`, `nombre`, `area`) VALUES
+(1,	'calculo',	'ciencias basicas'),
+(2,	'fisica',	'ciencias basicas'),
+(3,	'infantes',	'niños'),
+(4,	'Dactilografía',	'Informática'),
+(5,	'Quimica',	'Ciencias Basicas');
 
 DROP TABLE IF EXISTS `docente`;
 CREATE TABLE `docente` (
@@ -29,6 +35,22 @@ CREATE TABLE `docente` (
   KEY `fk_Docente_Usuario1` (`idUsuario`),
   CONSTRAINT `fk_Docente_Usuario1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='i';
+
+INSERT INTO `docente` (`idDocente`, `titulo`, `idUsuario`, `especializacion`, `experiencia`) VALUES
+(0,	'Ingeniero de Sistemas',	2,	'ninguna',	'1 año'),
+(1,	'Ingeniero de Sistemas',	4,	'Seguridad Informática',	'0');
+
+DROP TABLE IF EXISTS `estudiante`;
+CREATE TABLE `estudiante` (
+  `idEstudiante` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL,
+  `idGrupo` int(11) NOT NULL,
+  PRIMARY KEY (`idEstudiante`),
+  KEY `idUsuario` (`idUsuario`),
+  KEY `idGrupo` (`idGrupo`),
+  CONSTRAINT `estudiante_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`),
+  CONSTRAINT `estudiante_ibfk_2` FOREIGN KEY (`idGrupo`) REFERENCES `grupo` (`idGrupo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
 DROP TABLE IF EXISTS `grupo`;
@@ -47,6 +69,10 @@ CREATE TABLE `grupo` (
   CONSTRAINT `grupo_ibfk_1` FOREIGN KEY (`Docente_idDocente`) REFERENCES `docente` (`idDocente`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO `grupo` (`idGrupo`, `nivelAcademico`, `nombre`, `clave`, `Docente_idDocente`, `Asignatura_idAsignatura`) VALUES
+(1,	'1er Semestre',	'Calculo A1',	'40bd001563085fc35165329ea1ff5c5ecbdbbeef',	0,	1),
+(2,	'Jardin',	'Prejardin',	'40bd001563085fc35165329ea1ff5c5ecbdbbeef',	0,	3),
+(3,	'8',	'8 grupo1',	'40bd001563085fc35165329ea1ff5c5ecbdbbeef',	1,	4);
 
 DELIMITER ;;
 
@@ -85,11 +111,16 @@ CREATE TABLE `software` (
   `ubicacion` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `url` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `resumen` varchar(140) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `imagen` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `descarga` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idSoftware`),
   UNIQUE KEY `nombre_UNIQUE` (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO `software` (`idSoftware`, `nombre`, `desarrollador`, `descripcion`, `version`, `ubicacion`, `url`, `resumen`, `descarga`) VALUES
+(1,	'SageMath',	'Sage',	'<p>\n	Software Matematico para realizar calculos Avanzados ...</p>\n<p>\n	puede trabajar:</p>\n<ul>\n	<li>\n		calculos algebraicos</li>\n	<li>\n		derivadas</li>\n	<li>\n		integrales</li>\n</ul>\n',	'desconocida',	'http://sagenb.org',	'http://sagemath.org',	'Software Matematico para realizar calculos Avanzados',	NULL),
+(2,	'gcompris',	'desarrolador',	'<p>\r\n	asd</p>\r\n',	'12',	'ubica',	'asd',	'software niños',	NULL),
+(3,	'Redes Sociales',	'RS Community',	'<p>\r\n	Sus funcionalidades mas significativas son :</p>\r\n<ol>\r\n	<li>Facildad</li>\r\n\r\n	<li>Usabilidad</li>\r\n\r\n	<li>Colaboracion</li>\r\n</ol>',	'3.4.2',	'www.facebook.com',	'www.facebook.com',	'redes sociales como apoyo a colaboracion',	NULL),
+(4,	'Klavaro',	'Klavaro Community',	'<p>\r\n	Software para mecanografia, aprende escribiendo</p>\r\n',	'1',	'klavaro.sourceforge.net/en/',	'klavaro.sourceforge.net/en/',	'Software para mecanografia, aprende escribiendo',	NULL);
 
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
@@ -110,6 +141,9 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `nick_UNIQUE` (`nick`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO `usuario` (`idUsuario`, `identificacion`, `nombres`, `apellidos`, `direccion`, `telefono`, `email`, `tipo`, `nick`, `clave`, `fechanac`, `sexo`) VALUES
+(2,	'1140',	'Sergio C.',	'Orozco Torres',	'Calle 60 # 18 - 60',	'3045523',	'scot3004@gmail.com',	'Administrador',	'scot',	'40bd001563085fc35165329ea1ff5c5ecbdbbeef',	'1991-04-30',	'masculino'),
+(4,	'114083',	'Jorge Iván',	'Ibañez Fábregas',	'Cra 57 # 90 - 93',	'3002102',	'ibanezjorge@coruniamericana.edu.co',	'Docente',	'jiif',	'40bd001563085fc35165329ea1ff5c5ecbdbbeef',	'1991-01-31',	'masculino');
 
 DELIMITER ;;
 
@@ -123,10 +157,4 @@ end if;;
 
 DELIMITER ;
 
--- 2013-05-27 14:46:54
-
-
-GRANT USAGE ON *.* TO 'sesel'@'localhost' IDENTIFIED BY PASSWORD '*9A5D8799D4248DC3F52356A3BA1764BE93EB88E7';
-
-GRANT ALL PRIVILEGES ON `sesel`.* TO 'sesel'@'localhost';
-
+-- 2013-05-27 17:59:20

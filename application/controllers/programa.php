@@ -14,6 +14,7 @@ class Programa extends CI_Controller {
         parent::__construct();
         $this->load->model('mPrograma');
         $this->load->model('mDocente');
+        $this->load->helper('directory');
     }
 
     private function render($view, $params = array(), $titulo = "Software") {
@@ -76,6 +77,16 @@ class Programa extends CI_Controller {
         }        
         //print_r($categorias);
         $this->render('software', array('categorias' => $categorias));
+    }
+    
+    public function galeria($id=null){
+        if($id===null){
+            $this->render('error', array('titulo'=>'No existe o no se encuentra este Software', 'detalle'=>'Error al encontrar software!'));
+        }else{
+            $carpeta='assets/uploads/files/'.$id;
+            $map = directory_map($carpeta);
+            $this->render('galeria', array('map'=>$map, 'carpeta'=>$carpeta));
+        }
     }
 }
 
