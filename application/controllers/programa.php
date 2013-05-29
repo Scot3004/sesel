@@ -85,7 +85,8 @@ class Programa extends CI_Controller {
         }else{
             $carpeta='assets/uploads/files/'.$id;
             $map = directory_map($carpeta);
-            $this->render('galeria', array('map'=>$map, 'carpeta'=>$carpeta));
+            $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
+            $this->render('galeria', array('map'=>$map, 'carpeta'=>$carpeta, 'software'=>$programa));
         }
     }
 }
