@@ -1,3 +1,24 @@
+<script type="text/javascript">
+        /*======
+        Use document ready or window load events
+        For example:
+        With jQuery: $(function() { ...code here... })
+        Or window.onload = function() { ...code here ...}
+        Or document.addEventListener('DOMContentLoaded', function(){ ...code here... }, false)
+        =======*/
+
+        
+        $(function(){
+	var mySwiper = $('.swiper-container').swiper({
+		//Your options here:
+		mode:'horizontal',
+		loop: true,
+                keyboardControl: true,
+                autoPlay: 5000
+		//etc..
+	});
+        })
+        </script>
 <div class="nomsnap"><?php echo $software->nombre; ?></div>  
 <div class="swiper-container" >
     

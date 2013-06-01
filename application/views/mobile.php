@@ -9,27 +9,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-2.0.0.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mobile-1.3.1.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ditojs/idangerous.swiper.js"></script>
-        <script type="text/javascript">
-        /*======
-        Use document ready or window load events
-        For example:
-        With jQuery: $(function() { ...code here... })
-        Or window.onload = function() { ...code here ...}
-        Or document.addEventListener('DOMContentLoaded', function(){ ...code here... }, false)
-        =======*/
-
         
-        $(function(){
-	var mySwiper = $('.swiper-container').swiper({
-		//Your options here:
-		mode:'horizontal',
-		loop: true,
-                keyboardControl: true,
-                autoPlay: 5000
-		//etc..
-	});
-        })
-        </script>
     </head>
     <body>
         <div data-role="page" data-theme="b">
