@@ -14,11 +14,17 @@ class Admin extends CI_Controller {
         $this->load->library('grocery_CRUD');
     }
 
+    private function render($view, $params = array(), $titulo = "Control de Usuarios") {
+        $this->load->view('mobile', array('view' => $view,
+            'titulo' => $titulo,
+            'params' => $params));
+    }
+    
     function _example_output($output = null) {
         if ($this->session->userdata('tipo') === "Administrador") {
             $this->load->view('admin.php', $output);
         } else {
-            redirect('usuario/login', 'refresh');
+            $this->render('noautorizado');
         }
     }
 
@@ -67,42 +73,8 @@ class Admin extends CI_Controller {
             $crud->set_table('usuario');
             $crud->set_subject('Usuario');
             $crud->change_field_type("clave", "password");
-
-            $output = $crud->render();
-
-            $this->_example_output($output);
-        } catch (Exception $e) {
-            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
-        }
-    }
-
-    function recomend_management() {
-        try {
-            $crud = new grocery_CRUD();
-
-            $crud->set_theme('datatables');
-            $crud->set_table('recomendacion');
-            $crud->set_subject('Recomendación');
-            $crud->set_relation('Software_idSoftware', 'software', 'nombre');
-            $crud->set_relation('Grupo_idGrupo', 'grupo', '{nivelAcademico} - {nombre}');
-
-            $output = $crud->render();
-
-            $this->_example_output($output);
-        } catch (Exception $e) {
-            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
-        }
-    }
-
-    function group_management() {
-        try {
-            $crud = new grocery_CRUD();
-            $crud->set_theme('datatables');
-            $crud->set_table('grupo');
-            $crud->set_subject('Grupo');
-            $crud->change_field_type("clave", "password");
-            $crud->set_relation('Docente_idDocente', 'docente', 'idDocente');
-            $crud->set_relation('Asignatura_idAsignatura', 'asignatura', '{Nombre} - {Area}');
+            $crud->set_relation_n_n('Grupos', 'estudiante', 'grupo', 'idUsuario', 'idGrupo', 'nombre');
+            
             $output = $crud->render();
 
             $this->_example_output($output);
@@ -127,5 +99,58 @@ class Admin extends CI_Controller {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
     }
+    
+    function group_management() {
+        try {
+            $crud = new grocery_CRUD();
+            $crud->set_theme('datatables');
+            $crud->set_table('grupo');
+            $crud->set_subject('Grupo');
+            $crud->change_field_type("clave", "password");
+            $crud->set_relation('Docente_idDocente', 'docente', 'idDocente');
+            $crud->set_relation('Asignatura_idAsignatura', 'asignatura', '{Nombre} - {Area}');
+            $crud->set_relation_n_n('Estudiantes', 'estudiante', 'usuario', 'idGrupo', 'idUsuario', '{nombres} {apellidos}');
+            $output = $crud->render();
 
+            $this->_example_output($output);
+        } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+    
+    function student_management() {
+        try {
+            $crud = new grocery_CRUD();
+
+            $crud->set_theme('datatables');
+            $crud->set_table('estudiante');
+            $crud->set_subject('Estudiante');
+            $crud->set_relation('idUsuario', 'usuario', '{nombres} {apellidos}');
+            $crud->set_relation('idGrupo', 'grupo', '{nivelAcademico} - {nombre}');
+
+            $output = $crud->render();
+
+            $this->_example_output($output);
+        } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+    
+    function recomend_management() {
+        try {
+            $crud = new grocery_CRUD();
+
+            $crud->set_theme('datatables');
+            $crud->set_table('recomendacion');
+            $crud->set_subject('Recomendación');
+            $crud->set_relation('Software_idSoftware', 'software', 'nombre');
+            $crud->set_relation('Grupo_idGrupo', 'grupo', '{nivelAcademico} - {nombre}');
+
+            $output = $crud->render();
+
+            $this->_example_output($output);
+        } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
 }
