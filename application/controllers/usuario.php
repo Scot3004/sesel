@@ -95,6 +95,5 @@ class Usuario extends CI_Controller {
             return;
         }
     }
-
 }
 

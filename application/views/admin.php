@@ -28,15 +28,16 @@
     </head>
     <body>
         <nav>            
-            <a href='<?php echo site_url('main') ?>' >Inicio</a> 	
+            <a href='<?php echo site_url('main') ?>' class="ui-button-text">Inicio</a> 	
             <a href='<?php echo site_url('admin/software_management') ?>' >Software</a> 	
             <a href='<?php echo site_url('admin/subject_management') ?>' >Asignatura</a> 
-            <a href='<?php echo site_url('admin/user_management') ?>' >Usuarios</a> 
-            <a href='<?php echo site_url('admin/master_management') ?>' >Docente</a> 
             <a href='<?php echo site_url('admin/recomend_management') ?>' >Recomendaciones</a> 
+            <a href='<?php echo site_url('admin/user_management') ?>' >Usuarios</a> 
+            <a href='<?php echo site_url('admin/student_management') ?>' >Estudiante</a> 
+            <a href='<?php echo site_url('admin/master_management') ?>' >Docente</a> 
             <a href='<?php echo site_url('admin/group_management') ?>' >Grupos</a> 
             <a href='<?php echo site_url('usuario') ?>' >Perfil de Usuario</a> 
-            <a href='<?php echo site_url('usuario/salir') ?>' >Salir</a> 
+            <a href='<?php echo site_url('usuario/salir') ?>' >Salir</a>  
         </nav>
         <div style='height:20px;'></div>  
         <div>

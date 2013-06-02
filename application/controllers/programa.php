@@ -29,15 +29,10 @@ class Programa extends CI_Controller {
     
     public function listar() {
         try {
-            if ($this->session->userdata('tipo')) {
+            
                 $programas = $this->mPrograma->buscar();
-                $asignaturas=new stdClass();
-                $asignaturas->nombre="";
-                $asignaturas->programas=$programas;
-                $this->render('software', array('categorias' => array($asignaturas)));
-            } else {
-                redirect('usuario/login', 'refresh');
-            }
+                $this->render('programa', array('programas' => $programas));
+            
         } catch (Exception $e) {
             $data['titulo'] = 'Problemas al buscar datos';
             $data['detalle'] = $e->getMessage();
@@ -67,16 +62,20 @@ class Programa extends CI_Controller {
         $this->render('software', array('categorias' => $asignaturas));
     }
     public function docente($id=null){
-        if($id!==null){
-            $categorias=$this->mDocente->buscarDocentes(array('d.idDocente' => $id));
-        }else {
-            $categorias=$this->mDocente->buscarDocentes();         
+        if ($this->session->userdata('tipo')) {
+            if($id!==null){
+                $categorias=$this->mDocente->buscarDocentes(array('d.idDocente' => $id));
+            }else {
+                $categorias=$this->mDocente->buscarDocentes();         
+            }
+            foreach ($categorias as $categoria){
+                $categoria->programas=$this->mPrograma->buscarDocente(array('d.idDocente'=>$categoria->idDocente));
+            }        
+            //print_r($categorias);
+            $this->render('software', array('categorias' => $categorias));
+        } else {
+            $this->render('noautorizado');
         }
-        foreach ($categorias as $categoria){
-            $categoria->programas=$this->mPrograma->buscarDocente(array('d.idDocente'=>$categoria->idDocente));
-        }        
-        //print_r($categorias);
-        $this->render('software', array('categorias' => $categorias));
     }
     
     public function galeria($id=null){
