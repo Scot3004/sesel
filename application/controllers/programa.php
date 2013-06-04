@@ -41,8 +41,12 @@ class Programa extends CI_Controller {
     }
 
     public function detalle($id=null) {
-        $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
-        $this->render('detallesoftware', array('software' => $programa));
+        if($id===null){
+            $this->render('error', array('titulo'=>'No Programa', 'detalle'=>'No has escogido ningun Programa'));
+        }else{
+            $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
+            $this->render('detallesoftware', array('software' => $programa));
+        }
     }
     
     public function asignatura($id=null){
@@ -71,7 +75,6 @@ class Programa extends CI_Controller {
             foreach ($categorias as $categoria){
                 $categoria->programas=$this->mPrograma->buscarDocente(array('d.idDocente'=>$categoria->idDocente));
             }        
-            //print_r($categorias);
             $this->render('software', array('categorias' => $categorias));
         } else {
             $this->render('noautorizado');

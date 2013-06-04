@@ -4,7 +4,7 @@ class mGrupo extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->database();
-        $this->select_fields = 'g.nombre, g.nivelAcademico';
+        $this->select_fields = 'g.nombre, g.nivelAcademico, g.idGrupo';
     }
 
     public function buscar($arr = array(), $tabla = 'grupo') {
@@ -34,7 +34,7 @@ class mGrupo extends CI_Model {
     public function buscarAsignatura($arr = array()) {
         $this->db->select($this->select_fields . ', a.nombre as categoria');
         $this->db->from('grupo g');
-        $this->db->join('asignatura a', 'g.Asignatura_idAsignatura = a.idAsignatura', 'LEFT');
+        $this->db->join('asignatura a', 'g.Asignatura_idAsignatura = a.idAsignatura', 'RIGHT');
         $this->db->where($arr);
         return $this->db->get()->result();
     }

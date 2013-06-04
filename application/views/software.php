@@ -13,9 +13,7 @@
                         <li><a href="<?php echo site_url('programa/detalle') ?>/<?php echo $row->idSoftware ?>"><h1><?php echo $row->nombre ?></h1><p><?php echo $row->resumen ?><br/><?php echo $row->desarrollador ?></p></a></li>
                     <?php endforeach;
                 endif;
-                ?>
-
-    <?php endforeach; ?>
+            endforeach; ?>
         </ul>
     </div>
 <?php endif; ?>
