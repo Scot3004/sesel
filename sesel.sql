@@ -8,6 +8,12 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 CREATE DATABASE `sesel` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
 USE `sesel`;
 
+GRANT USAGE ON *.* TO 'sesel'@'localhost' IDENTIFIED BY PASSWORD '*9A5D8799D4248DC3F52356A3BA1764BE93EB88E7';
+
+GRANT ALL PRIVILEGES ON `sesel`.* TO 'sesel'@'localhost';
+
+
+
 DROP TABLE IF EXISTS `asignatura`;
 CREATE TABLE `asignatura` (
   `idAsignatura` int(11) NOT NULL AUTO_INCREMENT,
@@ -52,6 +58,10 @@ CREATE TABLE `estudiante` (
   CONSTRAINT `estudiante_ibfk_2` FOREIGN KEY (`idGrupo`) REFERENCES `grupo` (`idGrupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO `estudiante` (`idEstudiante`, `idUsuario`, `idGrupo`) VALUES
+(1,	2,	3),
+(2,	2,	1),
+(3,	4,	2);
 
 DROP TABLE IF EXISTS `grupo`;
 CREATE TABLE `grupo` (
@@ -100,6 +110,8 @@ CREATE TABLE `recomendacion` (
   CONSTRAINT `recomendacion_ibfk_1` FOREIGN KEY (`Grupo_idGrupo`) REFERENCES `grupo` (`idGrupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO `recomendacion` (`idRecomendacion`, `nombre`, `Detalle`, `Grupo_idGrupo`, `Software_idSoftware`) VALUES
+(1,	'SageMathl',	'<p>\n	El software matematico es util para calcular las derivadas, integrales y la programaci&oacute;n se puede implementar en clases</p>\n',	1,	1);
 
 DROP TABLE IF EXISTS `software`;
 CREATE TABLE `software` (
@@ -157,4 +169,4 @@ end if;;
 
 DELIMITER ;
 
--- 2013-05-27 17:59:20
+-- 2013-06-04 10:45:03
