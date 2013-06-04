@@ -49,7 +49,7 @@ class Usuario extends CI_Controller {
                 $this->render('error', $data);
             } else {
                 // si es erroneo, devolvemos un mensaje de error
-                $this->render('error', array('titulo' => 'no se pudo iniciar sesi&oacute;n', 'detalle' => 'el usuario o clave no es valido'));
+                $this->render('login', array('mensaje' => 'el usuario o clave no es valido'));
             }
         }
         return $tipo;
@@ -76,24 +76,18 @@ class Usuario extends CI_Controller {
     }
 
     public function registro() {
-        //aca se valida que solo el admin ingrese
-        if ($this->session->userdata('tipo') === "Administrador") {
-            //$usuario = new Usuario();
-            if (isset($_POST["identificacion"])) {
-                $arr = $_POST;
-                if ($arr['clave'] === $arr['rclave']) {
-                    unset($arr['rclave']);
-                    unset($arr['registrar']);
-                    $this->mUsuario->registrar($arr);
-                    redirect('main', 'refresh');
-                }
-            } else {
-                $this->render('registro');
-            }return;
+        //$usuario = new Usuario();
+        if (isset($_POST["identificacion"])) {
+            $arr = $_POST;
+            if ($arr['clave'] === $arr['rclave']) {
+                unset($arr['rclave']);
+                unset($arr['registrar']);
+                $this->mUsuario->registrar($arr);
+                render('login');
+            }
         } else {
-            $this->render('login');
-            return;
-        }
+            $this->render('registro');
+        }return;
     }
 }
 

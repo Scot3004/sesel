@@ -38,19 +38,14 @@ class Docente extends CI_Controller {
         if($id===null){
             $this->render('error', array('titulo'=>'No Docente', 'detalle'=>'No has escogido ningun docente'));
         }else{
-            $str="";
             $docente = $this->mDocente->buscar(array('idDocente'=>$id));
-            $class_vars = get_object_vars($docente[0]);
-            foreach ($class_vars as $name => $value) {
-                $str.= "$name : $value <br/>";
-            }
-            $this->render('error', array('titulo'=>$id, 'detalle'=>$str));
+            $this->render('objeto', array('titulo'=>$id, 'objeto'=>$docente[0]));
         }
     }
     
-    function group_management() {
+    function grupo() {
         try {
-            if ($this->session->userdata('tipo') === "Docente") {
+            if ($this->session->userdata('tipo') === "Docente"||$this->session->userdata('tipo') === "Administrador") {
                 $crud = new grocery_CRUD();
                 $crud->set_theme('datatables');
                 $crud->set_table('grupo');

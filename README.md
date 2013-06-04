@@ -29,9 +29,14 @@ Objetivos específicos:
 - [x] Modelo Orientado a Objetos
 - [x] Login
 - [x] Cerrar Sesión
-- [ ] -Desarrollar XML-
-- [+] Realizar busquedas de software
-- [+] segun asignaturas    
-- [+] segun docentes
+- [x] Realizar busquedas de software
+- [x] segun asignaturas    
+- [x] segun docentes
+- [x] Desarrollar una interfáz administrativa
+- [ ] Realizar Busqueda de grupos
+- [ ] por docente
+- [ ] por asignatura
+- [ ] Restablecer contraseña
+- [+] Registro de usuarios externo
 
     

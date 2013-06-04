@@ -33,7 +33,7 @@ class Admin extends CI_Controller {
         $this->_example_output((object) array('output' => $output, 'js_files' => array(), 'css_files' => array()));
     }
 
-    function software_management() {
+    function programa() {
         try {
             $crud = new grocery_CRUD();
 
@@ -49,7 +49,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    function subject_management() {
+    function asignatura() {
         try {
             $crud = new grocery_CRUD();
 
@@ -65,7 +65,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    function user_management() {
+    function usuario() {
         try {
             $crud = new grocery_CRUD();
 
@@ -83,7 +83,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    function master_management() {
+    function docente() {
         try {
             $crud = new grocery_CRUD();
 
@@ -100,7 +100,7 @@ class Admin extends CI_Controller {
         }
     }
     
-    function group_management() {
+    function grupo() {
         try {
             $crud = new grocery_CRUD();
             $crud->set_theme('datatables');
@@ -118,7 +118,7 @@ class Admin extends CI_Controller {
         }
     }
     
-    function student_management() {
+    function estudiante() {
         try {
             $crud = new grocery_CRUD();
 
@@ -136,7 +136,7 @@ class Admin extends CI_Controller {
         }
     }
     
-    function recomend_management() {
+    function recomendacion() {
         try {
             $crud = new grocery_CRUD();
 

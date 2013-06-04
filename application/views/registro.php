@@ -32,11 +32,7 @@
 	<option value="femenino">Femenino</option>
 	<option value="masculino">Masculino</option>
 	</select>	
-	<select name="tipo" id="tipo"  data-native-menu="false" data-theme="b" data-mini="true" >
-            <option value="Administrador">Administrador</option>
-            <option value="Docente">Docente</option>
-        </select>
-        <label for="fechanac">Fecha de Nacimiento *</label>
+	<label for="fechanac">Fecha de Nacimiento *</label>
 	<input name="fechanac" id="fechanac" data-options='{"noButton": true}' placeholder="" value="" type="text" data-mini="true" required/>
 	<br/>
 	<label for="nick">Nick *</label>
