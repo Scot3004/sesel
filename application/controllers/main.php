@@ -18,7 +18,6 @@ class Main extends CI_Controller {
      */
     public function __construct(){
             parent::__construct();
-            $this->load->library('mobile');
     }
  
     function render($view, $params = array(), $titulo="Pagina Principal") {
@@ -34,6 +33,11 @@ class Main extends CI_Controller {
     
     public function info(){
         $this->render('info');
+    }
+    
+    
+    public function notfound(){
+        $this->render('noencontrado');
     }
 }
 
