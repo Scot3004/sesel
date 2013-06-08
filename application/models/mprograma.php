@@ -34,7 +34,9 @@ class mPrograma extends CI_Model {
 
     public function buscarAsignatura($arr = array()) {
         $this->db->select($this->select_fields . ', a.nombre as categoria');
-        $this->db->from('grupo g');
+        $this->db->from('software s');
+        $this->db->join('recomendacion r', 's.idSoftware=r.Software_idSoftware', 'INNER');
+        $this->db->join('grupo g', 'r.Grupo_idGrupo=g.idGrupo', 'INNER');
         $this->db->join('asignatura a', 'g.Asignatura_idAsignatura = a.idAsignatura', 'LEFT');
         $this->db->where($arr);
         return $this->db->get()->result();

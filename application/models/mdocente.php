@@ -43,6 +43,20 @@ class mDocente extends CI_Model {
         return null;
     }
 
+    public function assocNombre($arr=array()){
+        $this->db->select('concat(u.nombres, " ", u.apellidos) as nombre, d.idDocente, u.identificacion', false);
+        $this->db->from('docente d', false);
+        $this->db->join('usuario u', 'u.idUsuario = d.idusuario', 'INNER');
+        $this->db->where($arr);
+        $query = $this->db->get();
+        $result = $query->result();
+        $return=array();
+        foreach($result as $row){
+            $return[$row->idDocente]=$row->nombre;
+        }
+        return $return;
+    }
+        
     public function registrar($arr = array()) {
         if (!empty($arr)) {
             $this->db->insert('software', $arr);

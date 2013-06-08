@@ -10,6 +10,7 @@ class Admin extends CI_Controller {
 
         $this->load->database();
         $this->load->helper('url');
+        $this->load->model('mDocente');
 
         $this->load->library('grocery_CRUD');
     }
@@ -36,8 +37,7 @@ class Admin extends CI_Controller {
     function programa() {
         try {
             $crud = new grocery_CRUD();
-
-            //$crud->set_theme('flexygrid');
+            $crud->set_theme('datatables');
             $crud->set_table('software');
             $crud->set_subject('Software');
 
@@ -106,8 +106,12 @@ class Admin extends CI_Controller {
             $crud->set_theme('datatables');
             $crud->set_table('grupo');
             $crud->set_subject('Grupo');
-            $crud->change_field_type("clave", "password");
-            $crud->set_relation('Docente_idDocente', 'docente', 'idDocente');
+            $crud->change_field_type("clave", "password"); 
+            $this->docentes=$this->mDocente->assocNombre();
+            //$crud->set_relation('Docente_idDocente', 'docente', 'idDocente');
+            $crud->field_type('Docente_idDocente','dropdown',$this->docentes);
+            $crud->callback_column('Docente_idDocente',array($this,'nombredocente'));
+            $crud->display_as('Docente_idDocente','Docente');
             $crud->set_relation('Asignatura_idAsignatura', 'asignatura', '{Nombre} - {Area}');
             $crud->set_relation_n_n('Estudiantes', 'estudiante', 'usuario', 'idGrupo', 'idUsuario', '{nombres} {apellidos}');
             $output = $crud->render();
@@ -116,6 +120,10 @@ class Admin extends CI_Controller {
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
+    }
+    
+    function nombredocente($value){
+        return $this->docentes[$value];
     }
     
     function estudiante() {
