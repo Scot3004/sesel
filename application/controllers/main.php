@@ -32,7 +32,15 @@ class Main extends CI_Controller {
     }  
     
     public function info(){
-        $this->render('info');
+        //$this->render('info');
+        if ($this->ion_auth->logged_in()){
+            echo "ok nuevo sistema";
+        }else{
+            echo "no has usado el nuevo login";
+        }
+        if ($this->ion_auth->in_group(array('admin', 'docente'))){
+            echo "hola admin";
+        }
     }
     
     

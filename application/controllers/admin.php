@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
     }
     
     function _example_output($output = null) {
-        if ($this->session->userdata('tipo') === "Administrador") {
+        if ($this->ion_auth->is_admin()){
             $this->load->view('admin.php', $output);
         } else {
             $this->render('noautorizado');

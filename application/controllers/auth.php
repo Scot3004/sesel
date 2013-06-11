@@ -733,11 +733,14 @@ class Auth extends CI_Controller {
 	function _render_page($view, $data=null, $render=false)
 	{
 
-		$this->viewdata = (empty($data)) ? $this->data: $data;
+		/*$this->viewdata = (empty($data)) ? $this->data: $data;
 
 		$view_html = $this->load->view($view, $this->viewdata, $render);
 
-		if (!$render) return $view_html;
+		if (!$render) return $view_html;*/
+            $this->load->view('mobile', array('view' => $view,
+            'titulo' => 'Acceso',
+            'params' => $data));
 	}
 
 }
