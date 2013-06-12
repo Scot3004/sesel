@@ -5,7 +5,7 @@ SET foreign_key_checks = 0;
 SET time_zone = '-05:00';
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-CREATE DATABASE `sesel` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
+CREATE DATABASE IF NOT EXISTS `sesel` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
 USE `sesel`;
 
 DROP TABLE IF EXISTS `asignatura`;
