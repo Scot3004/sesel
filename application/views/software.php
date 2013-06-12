@@ -1,12 +1,12 @@
-<?php if (empty($categorias)): ?>
-    No se encontraron datos
+<?php if (empty($categorias)): 
+     echo $this->lang->line('sesel_empty');?>
 <?php else: ?>
     <div data-role="content">
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a" data-filter="true" data-filter-placeholder="Filtrar Software">
             <?php foreach ($categorias as $categoria): ?>
                 <li data-role="list-divider"><?php echo $categoria->nombre ?></li>
                 <?php if (empty($categoria->programas)): ?>
-                    <li data-role="list-divider" data-theme="c">No hay programas para esta categoria</li>
+                    <li data-role="list-divider" data-theme="c"><?php $this->lang->line('sesel_software_category_empty');?></li>
                 <?php else:
                     foreach ($categoria->programas as $row):
                         ?>

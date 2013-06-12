@@ -1,7 +1,7 @@
 <div data-role="content">
     <ul data-role="listview" data-inset="true" data-theme="c" data-autodividers="true" data-dividertheme="a" data-filter="true" data-filter-placeholder="Filtrar Software">
         <?php if (empty($programas)): ?>
-            <li data-role="list-divider" data-theme="c">No hay programas para esta categoria</li>
+            <li data-role="list-divider" data-theme="c"><?php echo $this->lang->line('sesel_software_category_empty');?></li>
             <?php
         else:
             foreach ($programas as $row):

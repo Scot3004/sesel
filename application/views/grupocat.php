@@ -6,7 +6,7 @@
             <?php foreach ($categorias as $categoria): ?>
                 <li data-role="list-divider"><?php echo $categoria->nombre ?></li>
                 <?php if (empty($categoria->grupos)): ?>
-                    <li data-role="list-divider" data-theme="c">No hay grupos para esta categoria</li>
+                    <li data-role="list-divider" data-theme="c"><?php echo $this->lang->line('sesel_no_groups_category');?></li>
                 <?php else:
                     foreach ($categoria->grupos as $row):
                        ?>

@@ -66,7 +66,7 @@ class Programa extends CI_Controller {
         $this->render('software', array('categorias' => $asignaturas));
     }
     public function docente($id=null){
-        if ($this->session->userdata('tipo')) {
+        if ($this->ion_auth->logged_in()) {
             if($id!==null){
                 $categorias=$this->mDocente->buscarDocentes(array('d.idDocente' => $id));
             }else {

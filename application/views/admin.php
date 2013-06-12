@@ -29,15 +29,15 @@
     <body>
         <nav>            
             <a href='<?php echo site_url('main') ?>' class="ui-button-text">Inicio</a> 	
-            <a href='<?php echo site_url('admin/programa') ?>' >Software</a> 	
-            <a href='<?php echo site_url('admin/asignatura') ?>' >Asignatura</a> 
-            <a href='<?php echo site_url('admin/recomendacion') ?>' >Recomendaciones</a> 
-            <a href='<?php echo site_url('admin/usuario') ?>' >Usuarios</a> 
-            <a href='<?php echo site_url('admin/estudiante') ?>' >Estudiante</a> 
-            <a href='<?php echo site_url('admin/docente') ?>' >Docente</a> 
-            <a href='<?php echo site_url('admin/grupo') ?>' >Grupos</a> 
-            <a href='<?php echo site_url('usuario') ?>' >Perfil de Usuario</a> 
-            <a href='<?php echo site_url('usuario/salir') ?>' >Salir</a>  
+            <a href='<?php echo site_url('admin/programa') ?>' ><?php echo $this->lang->line('sesel_software');?></a> 	
+            <a href='<?php echo site_url('admin/asignatura') ?>' ><?php echo $this->lang->line('sesel_signature');?></a> 
+            <a href='<?php echo site_url('admin/recomendacion') ?>' ><?php echo $this->lang->line('sesel_recomendation');?></a> 
+            <a href='<?php echo site_url('admin/usuario') ?>' ><?php echo $this->lang->line('sesel_user');?></a> 
+            <a href='<?php echo site_url('admin/estudiante') ?>' ><?php echo $this->lang->line('sesel_student');?></a> 
+            <a href='<?php echo site_url('admin/docente') ?>' ><?php echo $this->lang->line('sesel_teacher');?></a> 
+            <a href='<?php echo site_url('admin/grupo') ?>' ><?php echo $this->lang->line('sesel_groups');?></a> 
+            <a href='<?php echo site_url('usuario') ?>' ><?php echo $this->lang->line('sesel_user_profile');?></a> 
+            <a href='<?php echo site_url('usuario/salir') ?>' ><?php echo $this->lang->line('sesel_logout');?></a>  
         </nav>
         <div style='height:20px;'></div>  
         <div>

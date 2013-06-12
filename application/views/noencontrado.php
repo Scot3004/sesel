@@ -1,7 +1,8 @@
 <h1>No se pudo localizar la página</h1>
-<p>La página <?php echo anchor(current_url())?> que solicitas no pudo ser encontrada</p>
-<p>esto puede deberse a las siguientes razones:</p>
+<?php printf($this->lang->line('sesel_page_not_found'), anchor(current_url()));
+?>
+<p><?php echo $this->lang->line('sesel_maybe');?></p>
 <ul>
-    <li>La página fue movida</li>
-    <li>Escribiste mal el enlace</li>
+    <li><?php echo $this->lang->line('sesel_page_moved');?></li>
+    <li><?php echo $this->lang->line('sesel_error_link');?></li>
 </ul>
