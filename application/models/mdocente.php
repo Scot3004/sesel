@@ -34,13 +34,11 @@ class mDocente extends CI_Model {
     }
 
     public function buscarGrupo($arr = array()) {
-        /*$this->db->select($this->select_fields . ', d.idDocente', false);
-        $this->db->from('software s');
-        $this->db->join('recomendacion r', 's.idSoftware=r.Software_idSoftware', 'INNER');
-        $this->db->join('grupo g', 'r.Grupo_idGrupo=g.idGrupo', 'INNER');
+        $this->db->select('*', false);
+        $this->db->from('docente d');
+        $this->db->join('grupo g', 'd.idDocente=g.Docente_idDocente', 'INNER');
         $this->db->where($arr);
-        return $this->db->get()->result();*/
-        return null;
+        return $this->db->get()->result();
     }
 
     public function assocNombre($arr=array()){

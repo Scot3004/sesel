@@ -58,7 +58,16 @@ class Grupo extends CI_Controller {
             }
             
         }
-        $this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
         $this->render('grupocat', array('categorias' => $asignaturas));
+    }
+    
+    public function docente($id=null){
+        if($id===null){
+            $this->render('error', array('titulo'=>'No Docente', 'detalle'=>'No has escogido ningun docente'));
+        }else{
+            $grupos = $this->mGrupo->buscar(array('Docente_idDocente'=>$id));
+            $this->render('grupo', array('grupos' => $grupos));
+        }
     }
 }
