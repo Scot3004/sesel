@@ -28,10 +28,30 @@ class Main extends CI_Controller {
     }
    
     public function index(){
-        $this->render('info');
+       // $this->render('info');
+        $this->load->library('markdown');
+        $markdown_file_path = 'README.md';
+        $content=$this->markdown->parse_file($markdown_file_path);
+        $this->render("mensaje", array("titulo"=>"README", "detalle"=>$content));
     }  
+
+    public function license($filename='README.md'){
+        $file="licenses/".$filename.".txt";
+        if(!file_exists($file)){
+            show_404();
+        }else{
+            $f = fopen($file, "r");
+            $content="";
+            // Read line by line until end of file
+            while(!feof($f)) { 
+                $content.= fgets($f) . "<br />";
+            }
+            $this->render("mensaje", array("titulo"=>$this->lang->line('sesel_license'), "detalle"=>$content));
+            fclose($f);
+        }
+    }
     
-    public function info(){
+    public function prueba(){
         //$this->render('info');
         if ($this->ion_auth->logged_in()){
             echo "ok nuevo sistema";
