@@ -27,17 +27,18 @@
         </style>
     </head>
     <body>
-        <nav>            
-            <a href='<?php echo site_url('main') ?>' class="ui-button-text">Inicio</a> 	
-            <a href='<?php echo site_url('admin/programa') ?>' ><?php echo $this->lang->line('sesel_software');?></a> 	
-            <a href='<?php echo site_url('admin/asignatura') ?>' ><?php echo $this->lang->line('sesel_signature');?></a> 
-            <a href='<?php echo site_url('admin/recomendacion') ?>' ><?php echo $this->lang->line('sesel_recomendation');?></a> 
-            <a href='<?php echo site_url('admin/usuario') ?>' ><?php echo $this->lang->line('sesel_user');?></a> 
-            <a href='<?php echo site_url('admin/estudiante') ?>' ><?php echo $this->lang->line('sesel_student');?></a> 
-            <a href='<?php echo site_url('admin/docente') ?>' ><?php echo $this->lang->line('sesel_teacher');?></a> 
-            <a href='<?php echo site_url('admin/grupo') ?>' ><?php echo $this->lang->line('sesel_groups');?></a> 
-            <a href='<?php echo site_url('usuario') ?>' ><?php echo $this->lang->line('sesel_user_profile');?></a> 
-            <a href='<?php echo site_url('usuario/salir') ?>' ><?php echo $this->lang->line('sesel_logout');?></a>  
+        <nav>    
+            <?php
+            echo anchor(site_url('main'), $this->lang->line('sesel_start'));
+            echo anchor(site_url('admin/programa'), $this->lang->line('sesel_software'));
+            echo anchor(site_url('admin/asignatura'), $this->lang->line('sesel_signature'));
+            echo anchor(site_url('admin/recomendacion'), $this->lang->line('sesel_recomendation'));
+            echo anchor(site_url('admin/usuario'), $this->lang->line('sesel_user'));
+            echo anchor(site_url('admin/estudiante'), $this->lang->line('sesel_student'));
+            echo anchor(site_url('admin/docente'), $this->lang->line('sesel_teacher'));
+            echo anchor(site_url('admin/grupo'), $this->lang->line('sesel_groups'));
+            echo anchor(site_url('auth/logout'), $this->lang->line('sesel_logout'));
+        ?>            
         </nav>
         <div style='height:20px;'></div>  
         <div>

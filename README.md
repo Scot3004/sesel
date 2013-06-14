@@ -45,4 +45,8 @@ Objetivos específicos:
 - [ ] Perfil del Docente
 - [ ] Integrar gráfico que muestre el uso de la plataforma
 - [ ] Mostrar detalles del rendimiento del sistema
+- [x] Archivo Readme Cargado
+- [ ] Internaciolalización
+- [ ] español
+- [ ] ingles
     

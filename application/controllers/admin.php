@@ -30,8 +30,10 @@ class Admin extends CI_Controller {
     }
 
     function index() {
-        $output = $this->load->view('info', null, true);
-        $this->_example_output((object) array('output' => $output, 'js_files' => array(), 'css_files' => array()));
+        $this->load->library('markdown');
+        $markdown_file_path = 'README.md';
+        $content=$this->markdown->parse_file($markdown_file_path);
+        $this->_example_output((object) array('output' => $content, 'js_files' => array(), 'css_files' => array()));
     }
 
     function programa() {
