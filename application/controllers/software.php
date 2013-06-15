@@ -24,7 +24,7 @@ class Software extends CI_Controller {
     }
 
     public function index() {
-        $this->render("menusoftware");
+        $this->render("menus/software");
     }
     
     public function listar() {

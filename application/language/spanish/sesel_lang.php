@@ -5,6 +5,7 @@ $lang['sesel_login']='Iniciar Sesion';
 $lang['sesel_logout']='Salir';
 $lang['sesel_register']='Registrarme';
 $lang['sesel_start']='Inicio';
+$lang['sesel_active']='Activo';
 
 //General
 $lang['sesel_description']='Descripción';
@@ -14,11 +15,6 @@ $lang['sesel_license']='Terminos de Licencia';
 $lang['sesel_maybe']='Quizás';
 $lang['sesel_name']='Nombre';
 $lang['sesel_short_description']='Resumen';
-
-//Groups
-$lang['sesel_groups']='Grupo';
-$lang['sesel_no_groups']='No existen grupos';
-$lang['sesel_no_groups_category']='No hay grupos para ésta categoria';
 
 //Pages
 $lang['sesel_auth_header']='Control de Usuarios';
@@ -42,15 +38,33 @@ $lang['sesel_url']='URL';
 $lang['sesel_version']='Versión';
 
 //Subjects
-$lang['sesel_signature']='Asignatura';
+$lang['sesel_subject']='Asignatura';
+$lang['sesel_area']='Área';
 
 //Recommentations
 $lang['sesel_recomendation']='Recomendacion';
 
 //Users
-$lang['sesel_user']='Usuarios';
+$lang['sesel_user']='Usuario';
+$lang['sesel_users']='Usuarios';
 $lang['sesel_student']='Estudiante';
+$lang['sesel_students']='Estudiantes';
 $lang['sesel_teacher']='Docente';
+$lang['sesel_password']='Clave';
+$lang['sesel_level']='Nivel';
+$lang['sesel_first_name']='Nombres';
+$lang['sesel_last_name']='Apellidos';
+$lang['sesel_address']='Dirección';
+$lang['sesel_ip_address']='Dirección IP';
+$lang['sesel_phone']='Teléfono';
+$lang['sesel_email']='Correo';
+$lang['sesel_username']='Alias';
+$lang['sesel_groups']='Grupos';
+$lang['sesel_group']='Grupo';
+$lang['sesel_no_groups']='No existen grupos';
+$lang['sesel_no_groups_category']='No hay grupos para ésta categoria';
+
+
 
 $lang['sesel_']='';
 ?>
