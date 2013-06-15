@@ -19,7 +19,7 @@ class Main extends CI_Controller {
     public function __construct(){
             parent::__construct();
     }
- 
+    
     function render($view, $params = array(), $titulo="Pagina Principal") {
          $this->load->view('mobile', 
                      array('view'=>$view, 

@@ -6,12 +6,14 @@
             <?php foreach ($categorias as $categoria): ?>
                 <li data-role="list-divider"><?php echo $categoria->nombre ?></li>
                 <?php if (empty($categoria->programas)): ?>
-                    <li data-role="list-divider" data-theme="c"><?php $this->lang->line('sesel_software_category_empty');?></li>
+                    <li data-role="list-divider" data-theme="c"><?php $this->lang->line('sesel_software_not_found');?></li>
                 <?php else:
                     foreach ($categoria->programas as $row):
-                        ?>
-                        <li><a href="<?php echo site_url('programa/detalle') ?>/<?php echo $row->idSoftware ?>"><h1><?php echo $row->nombre ?></h1><p><?php echo $row->resumen ?><br/><?php echo $row->desarrollador ?></p></a></li>
-                    <?php endforeach;
+                        echo '<li>'.anchor('software/detalle'.$row->idSoftware, 
+                            "<h1>".$row->name."</h1>
+                            <p>".$row->short_description."<br/>".$row->developer."</p>
+                            ").'</li>';
+                    endforeach;
                 endif;
             endforeach; ?>
         </ul>

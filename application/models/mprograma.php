@@ -10,7 +10,7 @@ class mPrograma extends CI_Model {
 
     public function buscar($arr = array(), $tabla = 'software') {
         $this->db->where($arr);
-        $this->db->order_by('nombre');
+        $this->db->order_by('name');
         $query = $this->db->get($tabla);
         if ($query->num_rows() > 0) {
             return $query->result();

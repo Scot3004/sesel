@@ -8,7 +8,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Programa extends CI_Controller {
+class Software extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -29,10 +29,8 @@ class Programa extends CI_Controller {
     
     public function listar() {
         try {
-            
-                $programas = $this->mPrograma->buscar();
-                $this->render('programa', array('programas' => $programas));
-            
+            $programas = $this->mPrograma->buscar();
+            $this->render('software/list', array('programas' => $programas));
         } catch (Exception $e) {
             $data['titulo'] = 'Problemas al buscar datos';
             $data['detalle'] = $e->getMessage();
@@ -42,10 +40,11 @@ class Programa extends CI_Controller {
 
     public function detalle($id=null) {
         if($id===null){
-            $this->render('error', array('titulo'=>'No Programa', 'detalle'=>'No has escogido ningun Programa'));
+            show_error($this->lang->line('sesel_software_not_found'));
+            //$this->render('error', array('titulo'=>'No Programa', 'detalle'=>'No has escogido ningun Programa'));
         }else{
             $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
-            $this->render('detallesoftware', array('software' => $programa));
+            $this->render('software/details', array('software' => $programa));
         }
     }
     

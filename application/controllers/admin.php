@@ -36,13 +36,20 @@ class Admin extends CI_Controller {
         $this->_example_output((object) array('output' => $content, 'js_files' => array(), 'css_files' => array()));
     }
 
-    function programa() {
+    function software() {
         try {
             $crud = new grocery_CRUD();
             $crud->set_theme('datatables');
             $crud->set_table('software');
             $crud->set_subject('Software');
 
+            $crud->display_as('name',$this->lang->line('sesel_name'));
+            $crud->display_as('developer',$this->lang->line('sesel_developer'));            
+            $crud->display_as('description',$this->lang->line('sesel_description')); 
+            $crud->display_as('location',$this->lang->line('sesel_location')); 
+            $crud->display_as('url',$this->lang->line('sesel_url')); 
+            $crud->display_as('short_description',$this->lang->line('sesel_short_description')); 
+            $crud->display_as('download',$this->lang->line('sesel_download')); 
             $output = $crud->render();
 
             $this->_example_output($output);
@@ -76,7 +83,7 @@ class Admin extends CI_Controller {
             $crud->set_subject('Usuario');
             $crud->change_field_type("clave", "password");
             $crud->set_relation_n_n('Grupos', 'estudiante', 'grupo', 'idUsuario', 'idGrupo', 'nombre');
-            
+            $crud->unset_columns('clave');
             $output = $crud->render();
 
             $this->_example_output($output);
@@ -110,8 +117,6 @@ class Admin extends CI_Controller {
             $crud->set_subject('Grupo');
             $crud->change_field_type("clave", "password"); 
             $this->docentes=$this->mDocente->assocNombre();
-            //$crud->set_relation('Docente_idDocente', 'docente', 'idDocente');
-            $crud->field_type('Docente_idDocente','dropdown',$this->docentes);
             $crud->callback_column('Docente_idDocente',array($this,'nombredocente'));
             $crud->display_as('Docente_idDocente','Docente');
             $crud->set_relation('Asignatura_idAsignatura', 'asignatura', '{Nombre} - {Area}');
@@ -151,11 +156,12 @@ class Admin extends CI_Controller {
             $crud = new grocery_CRUD();
 
             $crud->set_theme('datatables');
-            $crud->set_table('recomendacion');
-            $crud->set_subject('Recomendación');
-            $crud->set_relation('Software_idSoftware', 'software', 'nombre');
+            $crud->set_table('recommendation');
+            $crud->set_subject($this->lang->line('sesel_recommendation'));
+            $crud->set_relation('software', 'software', 'name');
             $crud->set_relation('Grupo_idGrupo', 'grupo', '{nivelAcademico} - {nombre}');
-
+            $crud->display_as('name',$this->lang->line('sesel_name'));
+            $crud->display_as('details',$this->lang->line('sesel_details'));
             $output = $crud->render();
 
             $this->_example_output($output);
