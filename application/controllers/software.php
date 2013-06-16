@@ -41,7 +41,6 @@ class Software extends CI_Controller {
     public function detalle($id=null) {
         if($id===null){
             show_error($this->lang->line('sesel_software_not_found'));
-            //$this->render('error', array('titulo'=>'No Programa', 'detalle'=>'No has escogido ningun Programa'));
         }else{
             $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
             $this->render('software/details', array('software' => $programa));
@@ -56,25 +55,25 @@ class Software extends CI_Controller {
             $asignatura->programas=$programa;
             $asignaturas=array($asignatura);
         }else {
-            $asignaturas=$this->mPrograma->buscar(array(),'asignatura');           
+            $asignaturas=$this->mPrograma->buscar(array(),'subject');           
             foreach ($asignaturas as $asignatura){
-                $asignatura->programas=$this->mPrograma->buscarAsignatura(array('a.nombre'=>$asignatura->nombre));
+                $asignatura->programas=$this->mPrograma->buscarAsignatura(array('a.idSubject'=>$asignatura->idSubject));
             }
             
         }
-        $this->render('software', array('categorias' => $asignaturas));
+        $this->render('software/list_category', array('categorias' => $asignaturas));
     }
     public function docente($id=null){
         if ($this->ion_auth->logged_in()) {
             if($id!==null){
-                $categorias=$this->mDocente->buscarDocentes(array('d.idDocente' => $id));
+                $categorias=$this->mDocente->buscarIDs(array('id' => $id));
             }else {
-                $categorias=$this->mDocente->buscarDocentes();         
+                $categorias=$this->mDocente->buscarIDs();         
             }
             foreach ($categorias as $categoria){
-                $categoria->programas=$this->mPrograma->buscarDocente(array('d.idDocente'=>$categoria->idDocente));
+                $categoria->programas=$this->mPrograma->buscarDocente(array('u.id'=>$categoria->id));
             }        
-            $this->render('software', array('categorias' => $categorias));
+            $this->render('software/list_category', array('categorias' => $categorias));
         } else {
             $this->render('noautorizado');
         }
@@ -82,7 +81,7 @@ class Software extends CI_Controller {
     
     public function galeria($id=null){
         if($id===null){
-            $this->render('error', array('titulo'=>'No existe o no se encuentra este Software', 'detalle'=>'Error al encontrar software!'));
+            show_error($this->lang->line('sesel_software_not_found'));
         }else{
             $carpeta='assets/uploads/files/'.$id;
             $map = directory_map($carpeta);

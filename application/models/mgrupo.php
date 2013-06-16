@@ -4,12 +4,12 @@ class mGrupo extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->database();
-        $this->select_fields = 'g.nombre, g.nivelAcademico, g.idGrupo';
+        $this->select_fields = 'g.name, g.level, g.id';
     }
 
-    public function buscar($arr = array(), $tabla = 'grupo') {
+    public function buscar($arr = array(), $tabla = 'groups') {
         $this->db->where($arr);
-        $this->db->order_by('nombre');
+        $this->db->order_by('name');
         $query = $this->db->get($tabla);
         if ($query->num_rows() > 0) {
             return $query->result();
@@ -32,17 +32,17 @@ class mGrupo extends CI_Model {
     }
 
     public function buscarAsignatura($arr = array()) {
-        $this->db->select($this->select_fields . ', a.nombre as categoria');
-        $this->db->from('grupo g');
-        $this->db->join('asignatura a', 'g.Asignatura_idAsignatura = a.idAsignatura', 'RIGHT');
+        $this->db->select($this->select_fields . ', s.name as categoria');
+        $this->db->from('groups g');
+        $this->db->join('subject s', 's.idSubject = g.subject', 'RIGHT');
         $this->db->where($arr);
         return $this->db->get()->result();
     }
 
     public function buscarDocente($arr = array()) {
-        $this->db->select($this->select_fields . ', d.idDocente', false);
+        $this->db->select($this->select_fields . ', u.id, concat(u.first_name, " ", u.last_name) as name', false);
         $this->db->from('grupo g');
-        $this->db->join('docente d', 'g.Docente_idDocente = d.idDocente', 'LEFT');
+        $this->db->join('users u', 'g.teacher = u.id', 'LEFT');
         $this->db->where($arr);
         return $this->db->get()->result();
     }
@@ -58,7 +58,7 @@ class mGrupo extends CI_Model {
     
     public function buscarGrupo($arr = array()) {
         $this->db->where($arr);
-        $query = $this->db->get('grupo');
+        $query = $this->db->get('groups');
         return $query->row();
     }
 }

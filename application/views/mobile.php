@@ -21,7 +21,7 @@
             <div data-role="navbar"><ul>
                     <li><a href="<?php echo site_url('usuario')?>" data-theme="b" title="Home" data-icon="home">Home</a></li>
                     <li><a href="<?php echo site_url('admin')?>" data-theme="b" title="Admin" data-icon="gear" data-ajax="false">Admin</a></li>
-                    <li><a href="<?php echo site_url('programa')?>" data-theme="b" title="Software" data-icon="grid">Software</a></li>
+                    <li><a href="<?php echo site_url('software')?>" data-theme="b" title="Software" data-icon="grid">Software</a></li>
                     <li><a href="<?php echo site_url('auth/logout')?>" data-theme="b" title="Software" data-icon="back" data-ajax="false">Salir</a></li>
                 </ul></div>
             <div data-role="content" data-theme="b" >

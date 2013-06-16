@@ -5,7 +5,7 @@ class mPrograma extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->database();
-        $this->select_fields = 's.idSoftware, s.nombre, s.resumen, s.desarrollador ';
+        $this->select_fields = 's.idSoftware, s.name, s.short_description, s.developer';
     }
 
     public function buscar($arr = array(), $tabla = 'software') {
@@ -20,11 +20,9 @@ class mPrograma extends CI_Model {
     }
 
     public function buscarDocentes($arr = array()) {
-        $this->db->select('concat(u.nombres, " ", u.apellidos) as nombre, d.idDocente', false);
-        $this->db->from('docente d', false);
-        $this->db->join('usuario u', 'u.idUsuario = d.idusuario', 'INNER');
+        $this->db->select('concat(first_name, " ", last_name) as name', false);
         $this->db->where($arr);
-        $query = $this->db->get();
+        $query = $this->db->get('users');
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
@@ -33,21 +31,21 @@ class mPrograma extends CI_Model {
     }
 
     public function buscarAsignatura($arr = array()) {
-        $this->db->select($this->select_fields . ', a.nombre as categoria');
+        $this->db->select($this->select_fields . ', a.name as categoria');
         $this->db->from('software s');
-        $this->db->join('recomendacion r', 's.idSoftware=r.Software_idSoftware', 'INNER');
-        $this->db->join('grupo g', 'r.Grupo_idGrupo=g.idGrupo', 'INNER');
-        $this->db->join('asignatura a', 'g.Asignatura_idAsignatura = a.idAsignatura', 'LEFT');
+        $this->db->join('recommendation r', 's.idSoftware=r.software', 'INNER');
+        $this->db->join('groups g', 'r.group=g.id', 'INNER');
+        $this->db->join('subject a', 'g.subject = a.idSubject', 'LEFT');
         $this->db->where($arr);
         return $this->db->get()->result();
     }
 
     public function buscarDocente($arr = array()) {
-        $this->db->select($this->select_fields . ', d.idDocente', false);
+        $this->db->select($this->select_fields . ', u.id, concat(u.first_name, " ", u.last_name) as category', false);
         $this->db->from('software s');
-        $this->db->join('recomendacion r', 's.idSoftware=r.Software_idSoftware', 'INNER');
-        $this->db->join('grupo g', 'r.Grupo_idGrupo=g.idGrupo', 'INNER');
-        $this->db->join('docente d', 'g.Docente_idDocente = d.idDocente', 'LEFT');
+        $this->db->join('recommendation r', 's.idSoftware=r.software', 'INNER');
+        $this->db->join('groups g', 'r.group=g.id', 'INNER');
+        $this->db->join('users u', 'g.teacher = u.id', 'LEFT');
         $this->db->where($arr);
         return $this->db->get()->result();
     }
@@ -55,8 +53,8 @@ class mPrograma extends CI_Model {
     public function buscarGrupo($arr = array()) {
         $this->db->select($this->select_fields . ', d.idDocente', false);
         $this->db->from('software s');
-        $this->db->join('recomendacion r', 's.idSoftware=r.Software_idSoftware', 'INNER');
-        $this->db->join('grupo g', 'r.Grupo_idGrupo=g.idGrupo', 'INNER');
+        $this->db->join('recommendation r', 's.idSoftware=r.software', 'INNER');
+        $this->db->join('grupo g', 'r.group=g.idGrupo', 'INNER');
         $this->db->where($arr);
         return $this->db->get()->result();
     }

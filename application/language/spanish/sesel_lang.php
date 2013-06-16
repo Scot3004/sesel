@@ -61,8 +61,8 @@ $lang['sesel_email']='Correo';
 $lang['sesel_username']='Alias';
 $lang['sesel_groups']='Grupos';
 $lang['sesel_group']='Grupo';
-$lang['sesel_no_groups']='No existen grupos';
-$lang['sesel_no_groups_category']='No hay grupos para ésta categoria';
+$lang['sesel_groups_not_found']='No se encontraron grupos';
+$lang['sesel_groups_not_found_category']='No hay grupos para ésta categoria';
 
 
 

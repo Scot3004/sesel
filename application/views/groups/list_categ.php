@@ -11,7 +11,7 @@
                     foreach ($categoria->grupos as $row):
                        ?>
                         <li><a href="<?php echo site_url('grupo/detalle') ?>/<?php echo $row->idGrupo ?>">
-                                <h1><?php echo $row->nombre ?></h1><p><?php echo $row->nivelAcademico ?><br/>
+                                <h1><?php echo $row->name ?></h1><p><?php echo $row->nivelAcademico ?><br/>
                                     </p>
                             </a></li>
                     <?php

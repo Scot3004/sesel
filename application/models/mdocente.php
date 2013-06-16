@@ -8,9 +8,7 @@ class mDocente extends CI_Model {
     }
 
     public function buscar($arr = array()) {
-        $this->db->select('*, concat(u.nombres, " ", u.apellidos) as nombre', false);
-        $this->db->from('docente d', false);
-        $this->db->join('usuario u', 'u.idUsuario = d.idusuario', 'INNER');
+        $this->db->select('concat(u.first_name, " ", u.last_name) as name', false);
         $this->db->where($arr);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -20,10 +18,9 @@ class mDocente extends CI_Model {
         }
     }
 
-    public function buscarDocentes($arr = array()) {
-        $this->db->select('concat(u.nombres, " ", u.apellidos) as nombre, d.idDocente, u.identificacion, u.idUsuario, u.nick', false);
-        $this->db->from('docente d', false);
-        $this->db->join('usuario u', 'u.idUsuario = d.idusuario', 'INNER');
+    public function buscarIDs($arr = array()) {
+        $this->db->select('concat(u.first_name, " ", u.last_name) as name, id', false);
+        $this->db->from('users u', false);
         $this->db->where($arr);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -55,9 +52,9 @@ class mDocente extends CI_Model {
         return $return;
     }
         
-    public function registrar($arr = array()) {
+    public function registrar($arr = array(), $table="users") {
         if (!empty($arr)) {
-            $this->db->insert('software', $arr);
+            $this->db->insert($table, $arr);
         }
     }
 }
