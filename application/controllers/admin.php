@@ -15,7 +15,9 @@ class Admin extends CI_Controller {
         $this->load->library('grocery_CRUD');
     }
 
-    private function render($view, $params = array(), $titulo = "Control de Usuarios") {
+    private function render($view, $params = array(), $titulo = null) {
+        if($titulo===null)
+            $titulo=$this->lang->line('sesel_subject');
         $this->load->view('mobile', array('view' => $view,
             'titulo' => $titulo,
             'params' => $params));
@@ -67,6 +69,7 @@ class Admin extends CI_Controller {
             $crud->set_subject($this->lang->line('sesel_subject'));
             $crud->display_as('name',$this->lang->line('sesel_name'));
             $crud->display_as('area',$this->lang->line('sesel_area'));
+            $crud->display_as('weekly_hours',$this->lang->line('sesel_weekly_hours'));
             $output = $crud->render();
 
             $this->_example_output($output);

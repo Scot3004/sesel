@@ -40,6 +40,7 @@ $lang['sesel_version']='Versión';
 //Subjects
 $lang['sesel_subject']='Asignatura';
 $lang['sesel_area']='Área';
+$lang['sesel_weekly_hours']='IHS';
 
 //Recommentations
 $lang['sesel_recomendation']='Recomendacion';

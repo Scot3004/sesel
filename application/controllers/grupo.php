@@ -44,29 +44,30 @@ class Grupo extends CI_Controller {
         }
     }
     
-     public function asignatura($id=null){
-        if($id!==null){
-            $grupos = $this->mGrupo->buscarAsignatura(array('a.name' => $id));
+     public function asignatura($name=null){
+        if($name!==null){
+            $grupos = $this->mGrupo->buscarAsignatura(array('s.name' => $name));
             $asignatura=new stdClass();
-            $asignatura->nombre=$id;
+            $asignatura->name=$name;
             $asignatura->grupos=$grupos;
+            //print_r($asignatura);
             $asignaturas=array($asignatura);
         }else {
-            $asignaturas=$this->mGrupo->buscar(array(),'asignatura');           
+            $asignaturas=$this->mGrupo->buscar(array(),'subject');           
             foreach ($asignaturas as $asignatura){
-                $asignatura->grupos=$this->mGrupo->buscarAsignatura(array('a.nombre'=>$asignatura->nombre));
+                $asignatura->grupos=$this->mGrupo->buscarAsignatura(array('s.idSubject'=>$asignatura->idSubject));
             }
             
         }
         //$this->output->enable_profiler(TRUE);
-        $this->render('grupocat', array('categorias' => $asignaturas));
+        $this->render('groups/list_category', array('categorias' => $asignaturas));
     }
     
     public function docente($id=null){
         if($id===null){
             $this->render('error', array('titulo'=>'No Docente', 'detalle'=>'No has escogido ningun docente'));
         }else{
-            $grupos = $this->mGrupo->buscar(array('Docente_idDocente'=>$id));
+            $grupos = $this->mGrupo->buscar(array('u.id'=>$id));
             $this->render('grupo', array('grupos' => $grupos));
         }
     }
