@@ -18,8 +18,8 @@ Desarrollar una plataforma de aprendizaje web basada en software libre como apoy
 Objetivos específicos:
 ------
 - [x] Diseñar un sitio web en el que los niños y jóvenes puedan visualizar alternativas de software libre como apoyo a su aprendizaje.
-- [-] Recopilar software libres educativos, que sirva de respaldo al desarrollo de las actividades curriculares.
-- [-] Generar estadísticas a partir del uso y desempeño de la plataforma para  determinar la usabilidad y rendimiento de ésta.
+- [ ] Recopilar software libres educativos, que sirva de respaldo al desarrollo de las actividades curriculares.
+- [ ] Generar estadísticas a partir del uso y desempeño de la plataforma para  determinar la usabilidad y rendimiento de ésta.
 
  Desarrollo:
 ======
@@ -28,7 +28,6 @@ Control de acceso
 - [x] Login
 - [x] Cerrar Sesión
 - [-] Restablecer contraseña
-- [+] Registro de usuarios externo
 - [-] Perfil de Usuario
 
 Grupos
@@ -59,4 +58,3 @@ Sistema
  - [x] español
  - [-] ingles
 - [-] Script de Instalación
-    
