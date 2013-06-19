@@ -1,4 +1,5 @@
-<h1>No estás autorizado para acceder a la página</h1>
-<p>La página <?php echo anchor(current_url())?> que solicitas requiere que inicies sesion</p>
-<a href="<?php echo site_url('usuario/login')?>" data-role="button" data-icon="check" data-theme="a">Iniciar Sesion</a>
-<a href="<?php echo site_url('usuario/registro')?>" data-role="button" data-icon="check" data-theme="a">Registrarme</a>
+<?php 
+echo heading($this->lang->line('sesel_page_not_authorized'));
+printf($this->lang->line('sesel_page_not_authorized_details'), anchor(current_url()));
+echo anchor('auth/login', $this->lang->line('sesel_login'), 'data-role="button" data-icon="check" data-theme="a"');
+echo anchor('usuario/registro', $this->lang->line('sesel_register'), 'data-role="button" data-icon="check" data-theme="a"');

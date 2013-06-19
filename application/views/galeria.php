@@ -19,7 +19,7 @@
 	});
         })
         </script>
-<div class="nomsnap"><?php echo $software->nombre; ?></div>  
+<div class="nomsnap"><?php echo $software->name; ?></div>  
 <div class="swiper-container" >
     
     <div class="swiper-wrapper">

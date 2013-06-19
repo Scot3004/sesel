@@ -43,7 +43,17 @@ class Docente extends CI_Controller {
         }
     }
     
-    function grupo() {
+    function grupo($id=null){
+        if($id===null){
+            $this->render('error', array('titulo'=>'No Docente', 'detalle'=>'No has escogido ningun docente'));
+        }else{
+            $docente = $this->mGrupo->buscarGrupo(array('Docente_idDocente'=>$id));
+            //print_r($docente);
+            $this->render('grupo', array('grupos' => $docente));
+        }
+    }
+    
+    function grupoadm() {
         try {
             if ($this->session->userdata('tipo') === "Docente"||$this->session->userdata('tipo') === "Administrador") {
                 $crud = new grocery_CRUD();

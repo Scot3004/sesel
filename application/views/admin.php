@@ -27,17 +27,10 @@
         </style>
     </head>
     <body>
-        <nav>            
-            <a href='<?php echo site_url('main') ?>' class="ui-button-text">Inicio</a> 	
-            <a href='<?php echo site_url('admin/programa') ?>' >Software</a> 	
-            <a href='<?php echo site_url('admin/asignatura') ?>' >Asignatura</a> 
-            <a href='<?php echo site_url('admin/recomendacion') ?>' >Recomendaciones</a> 
-            <a href='<?php echo site_url('admin/usuario') ?>' >Usuarios</a> 
-            <a href='<?php echo site_url('admin/estudiante') ?>' >Estudiante</a> 
-            <a href='<?php echo site_url('admin/docente') ?>' >Docente</a> 
-            <a href='<?php echo site_url('admin/grupo') ?>' >Grupos</a> 
-            <a href='<?php echo site_url('usuario') ?>' >Perfil de Usuario</a> 
-            <a href='<?php echo site_url('usuario/salir') ?>' >Salir</a>  
+        <nav>    
+            <?php
+            $this->load->view('menus/admin')
+            ?>            
         </nav>
         <div style='height:20px;'></div>  
         <div>

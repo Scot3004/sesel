@@ -1,5 +1,3 @@
-sesel
-=====
 PLANTEAMIENTO DEL PROBLEMA
 =====
 En el aprendizaje estudiantil se habla de habilidades sociales, colaboración, al mencionar estos conceptos estamos describiendo los valores que el software libre, o el software opensource pueden brindar, pues estos se basan en el principio de trabajo colaborativo o trabajo en equipo, algo que en la instituciones de educación se busca resaltar, sin embargo se están omitiendo al usar software no libre, buscan software que limita el conocimiento de la herramienta, limitándose al que cumpla con la función inicialmente dada, olvidando que parte de la investigación radica en conocer la herramienta con la que se trabaja, pero si no conocemos el código, solo se conocerá una parte de la herramienta, y el adaptarla a las necesidades puntuales de la Institución, en este caso la I.E.D. José Martí, del barrio Simón Bolívar, distrito de Barranquilla.
@@ -8,7 +6,6 @@ como problema complementario la lógica abstracta que se maneja en los colegios 
 JUSTIFICACIÓN
 =====
 Es importante reforzar en la comunidad educativa valores como la responsabilidad, el respeto, la solidaridad, la democracia y la honestidad que, al usar programas de manera ilegal, (violando los términos de las licencias de software) están dejando a un lado. Además, para incentivar el desarrollo de la programación desde edades tempranas, ya que actualmente en los colegios no se profundiza y en la mayoría de los casos ni siquiera se llega a enseñar acerca de cómo están hechos los programas que utilizan a diario (por ser software privativos principalmente) y muchos de éstos niños se muestran muy interesados y es bueno que conozcan el funcionamiento de sus herramientas, puede que a partir de ellas surjan proyectos de emprendimiento, los cuales serian legales, ya que la licencia de la herramienta se lo permite al modificar el software y presentarlo como fork del proyecto original.
-
  
 OBJETIVOS
 =====
@@ -20,23 +17,46 @@ Desarrollar una plataforma de aprendizaje web basada en software libre como apoy
 
 Objetivos específicos:
 ------
-- [x] Diseñar un espacio en el que los niños y jóvenes puedan visualizar alternativas de software libre como apoyo a su aprendizaje.
-- [] Recopilar software libres educativos, que sirva de respaldo al desarrollo de las actividades curriculares.
-- [] Generar estadísticas a partir del uso y desempeño de la plataforma para  determinar la usabilidad y rendimiento de ésta.
+- [x] Diseñar un sitio web en el que los niños y jóvenes puedan visualizar alternativas de software libre como apoyo a su aprendizaje.
+- [-] Recopilar software libres educativos, que sirva de respaldo al desarrollo de las actividades curriculares.
+- [-] Generar estadísticas a partir del uso y desempeño de la plataforma para  determinar la usabilidad y rendimiento de ésta.
 
  Desarrollo:
 ======
-- [x] Modelo Orientado a Objetos
+Control de acceso
+------
 - [x] Login
 - [x] Cerrar Sesión
-- [x] Realizar busquedas de software
-- [x] segun asignaturas    
-- [x] segun docentes
-- [x] Desarrollar una interfáz administrativa
-- [ ] Realizar Busqueda de grupos
-- [ ] por docente
-- [ ] por asignatura
-- [ ] Restablecer contraseña
+- [-] Restablecer contraseña
 - [+] Registro de usuarios externo
+- [-] Perfil de Usuario
 
+Grupos
+------
+- [x] Realizar Busqueda de grupos
+- [+] Mostrar detalle de grupo
+ - [+] por docente
+ - [x] por asignatura
+- [-] Matricula en Grupo por parte de Estudiante
+
+Software
+-------
+- [x] Realizar busquedas de software
+ - [x] segun asignaturas    
+ - [-] segun usuarios
+ - [-] segun grupo
+- [x] Mostrar detalles del software
+- [x] Galeria de Software
+- [-] Realizar recomendaciones en interfáz movil
+- [x] Desarrollar una interfáz administrativa
+
+Sistema
+------
+- [-] Integrar gráfico que muestre el uso de la plataforma
+- [-] Mostrar detalles del rendimiento del sistema
+- [x] Archivo Readme Cargado
+- [x] Internaciolalización
+ - [x] español
+ - [-] ingles
+- [-] Script de Instalación
     

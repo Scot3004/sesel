@@ -1,7 +1,7 @@
 <div data-role="content">
     <ul data-role="listview" data-inset="true" data-theme="c" data-autodividers="true" data-dividertheme="a" data-filter="true" data-filter-placeholder="Filtrar Software">
         <?php if (empty($grupos)): ?>
-            <li data-role="list-divider" data-theme="c">No hay Grupos</li>
+            <li data-role="list-divider" data-theme="c"><?php echo $this->lang->line('sesel_no_groups');?></li>
             <?php
         else:
             foreach ($grupos as $row):

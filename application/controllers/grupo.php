@@ -22,7 +22,7 @@ class Grupo extends CI_Controller {
     public function listar() {
         try {
             $grupos = $this->mGrupo->buscar();
-            $this->render('grupo', array('grupos' => $grupos));
+            $this->render('groups/list', array('groups' => $grupos));
             
         } catch (Exception $e) {
             $data['titulo'] = 'Problemas al buscar datos';
@@ -33,9 +33,9 @@ class Grupo extends CI_Controller {
     
     public function detalle($id=NULL){
         if($id===null){
-            $this->render('error', array('titulo'=>'No Grupo', 'detalle'=>'No has escogido ningun grupo'));
+            show_error($this->lang->line('sesel_groups_not_found'));
         }else{
-            $arr=array('idGrupo' => $id);
+            $arr=array('id' => $id);
             $grupo = $this->mGrupo->buscarGrupo($arr);
             $docentes=$this->mDocente->buscarDocentes(array('idDocente'=>$grupo->Docente_idDocente));
             $grupo->docente=$docentes[0];
@@ -44,21 +44,31 @@ class Grupo extends CI_Controller {
         }
     }
     
-     public function asignatura($id=null){
-        if($id!==null){
-            $grupos = $this->mGrupo->buscarAsignatura(array('a.nombre' => $id));
+     public function asignatura($name=null){
+        if($name!==null){
+            $grupos = $this->mGrupo->buscarAsignatura(array('s.name' => $name));
             $asignatura=new stdClass();
-            $asignatura->nombre=$id;
+            $asignatura->name=$name;
             $asignatura->grupos=$grupos;
+            //print_r($asignatura);
             $asignaturas=array($asignatura);
         }else {
-            $asignaturas=$this->mGrupo->buscar(array(),'asignatura');           
+            $asignaturas=$this->mGrupo->buscar(array(),'subject');           
             foreach ($asignaturas as $asignatura){
-                $asignatura->grupos=$this->mGrupo->buscarAsignatura(array('a.nombre'=>$asignatura->nombre));
+                $asignatura->grupos=$this->mGrupo->buscarAsignatura(array('s.idSubject'=>$asignatura->idSubject));
             }
             
         }
-        $this->output->enable_profiler(TRUE);
-        $this->render('grupocat', array('categorias' => $asignaturas));
+        //$this->output->enable_profiler(TRUE);
+        $this->render('groups/list_category', array('categorias' => $asignaturas));
+    }
+    
+    public function docente($id=null){
+        if($id===null){
+            $this->render('error', array('titulo'=>'No Docente', 'detalle'=>'No has escogido ningun docente'));
+        }else{
+            $grupos = $this->mGrupo->buscar(array('u.id'=>$id));
+            $this->render('grupo', array('grupos' => $grupos));
+        }
     }
 }
