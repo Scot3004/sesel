@@ -20,7 +20,8 @@ $lang['sesel_short_description']='Resumen';
 $lang['sesel_auth_header']='Control de Usuarios';
 $lang['sesel_error_link']='Escribiste mal el enlace';
 $lang['sesel_footer']='Sesel Es Software Educativo Libre';
-$lang['sesel_page_not_authorized']='La página %s que solicitas requiere que inicies sesion';
+$lang['sesel_page_not_authorized']='No estás autorizado para acceder a la página';
+$lang['sesel_page_not_authorized_details']='La página %s que solicitas requiere que inicies sesion';
 $lang['sesel_page_not_found']='La página %s que solicitas no pudo ser encontrada';
 $lang['sesel_page_moved']='La página fue movida';
 $lang['sesel_user_profile']='Perfil de usuario';
@@ -64,8 +65,3 @@ $lang['sesel_groups']='Grupos';
 $lang['sesel_group']='Grupo';
 $lang['sesel_groups_not_found']='No se encontraron grupos';
 $lang['sesel_groups_not_found_category']='No hay grupos para ésta categoria';
-
-
-
-$lang['sesel_']='';
-?>
