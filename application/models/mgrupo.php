@@ -17,6 +17,17 @@ class mGrupo extends CI_Model {
         return $this->db->get()->result();       
     }
     
+    public function buscar2($arr = array(), $tabla = 'groups') {
+        $this->db->where($arr);
+        $this->db->order_by('name');
+        $query = $this->db->get($tabla);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
+    
     public function buscarAsignatura($arr = array()) {
         $this->db->select($this->select_fields . ', s.name as categoria');
         $this->db->from('groups g');

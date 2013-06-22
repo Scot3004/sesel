@@ -45,16 +45,16 @@ class Grupo extends CI_Controller {
     
      public function asignatura($name=null){
         if($name!==null){
-            $grupos = $this->mGrupo->buscarAsignatura(array('s.name' => $name));
+            $grupos = $this->mGrupo->buscar(array('s.name' => $name));
             $asignatura=new stdClass();
             $asignatura->name=$name;
             $asignatura->grupos=$grupos;
             //print_r($asignatura);
             $asignaturas=array($asignatura);
         }else {
-            $asignaturas=$this->mGrupo->buscar(array(),'subject');  
+            $asignaturas=$this->mGrupo->buscar2(array(),'subject');  
             foreach ($asignaturas as $asignatura){
-                $asignatura->grupos=$this->mGrupo->buscar(array('subject'=>$asignatura->idSubject),'groups');
+                $asignatura->grupos=$this->mGrupo->buscar(array('g.subject'=>$asignatura->idSubject),'groups');
             }
         }
         $this->output->enable_profiler(TRUE);
