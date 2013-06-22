@@ -12,7 +12,7 @@
             foreach ($categoria->grupos as $row):
                 echo '<li>'.anchor('grupo/detalle/'.$row->id, 
                     "<h1>".$row->name."</h1>
-                    <p>".$row->level."<br/></p>
+                    <p>".$row->level."<br/>".$row->teacher."<br/>".$row->subject."</p>
                     ").'</li>';
             endforeach;
         endif;

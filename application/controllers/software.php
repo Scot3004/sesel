@@ -26,7 +26,7 @@ class Software extends CI_Controller {
     public function index() {
         $this->render("menus/software");
     }
-    
+
     public function listar() {
         try {
             $programas = $this->mPrograma->buscar();
@@ -71,7 +71,7 @@ class Software extends CI_Controller {
                 $categorias=$this->mDocente->buscarIDs();         
             }
             foreach ($categorias as $categoria){
-                $categoria->programas=$this->mPrograma->buscarDocente(array('u.id'=>$categoria->id));
+                $categoria->programas=$this->mPrograma->buscarDocente(array('u.id'=>$categoria->idDocente));
             }        
             $this->render('software/list_category', array('categorias' => $categorias));
         } else {
