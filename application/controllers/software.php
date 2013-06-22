@@ -141,13 +141,13 @@ class Software extends CI_Controller {
 		{
 			$error = array('error' => $this->upload->display_errors(), 'id'=>$id);
 
-			$this->load->view('software/upload/form', $error);
+			$this->render('software/upload/form', $error);
 		}
 		else
 		{
 			$data = array('upload_data' => $this->upload->data(), 'id'=>$id);
 
-			$this->load->view('software/upload/success', $data);
+			$this->render('software/upload/success', $data);
 		}
 	}
 }
