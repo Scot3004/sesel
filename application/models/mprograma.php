@@ -8,6 +8,7 @@ class mPrograma extends CI_Model {
         $this->select_fields = 's.idSoftware, s.name, s.short_description, s.developer';
     }
 
+    //TODO: Reemplazar por el de mGeneral
     public function buscar($arr = array(), $tabla = 'software') {
         $this->db->where($arr);
         $this->db->order_by('name');

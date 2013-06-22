@@ -14,6 +14,7 @@ class Software extends CI_Controller {
         parent::__construct();
         $this->load->model('mPrograma');
         $this->load->model('mDocente');
+        $this->load->model('mGeneral');
         $this->load->helper('directory');
     }
 
@@ -29,7 +30,7 @@ class Software extends CI_Controller {
 
     public function listar() {
         try {
-            $programas = $this->mPrograma->buscar();
+            $programas = $this->mGeneral->buscar('software');
             $this->render('software/list', array('programas' => $programas));
         } catch (Exception $e) {
             $data['titulo'] = 'Problemas al buscar datos';
@@ -42,6 +43,9 @@ class Software extends CI_Controller {
         if($id===null){
             show_error($this->lang->line('sesel_software_not_found'));
         }else{
+            $this->load->library('form_validation');
+            $this->load->helper('language');
+            $this->form_validation->set_rules('name', $this->lang->line('sesel_name'), 'required');
             $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
             $this->render('software/details', array('software' => $programa));
         }
@@ -71,7 +75,7 @@ class Software extends CI_Controller {
                 $categorias=$this->mDocente->buscarIDs();         
             }
             foreach ($categorias as $categoria){
-                $categoria->programas=$this->mPrograma->buscarDocente(array('u.id'=>$categoria->idDocente));
+                $categoria->programas=$this->mPrograma->buscarDocente(array('u.id'=>$categoria->idUsuario));
             }        
             $this->render('software/list_category', array('categorias' => $categorias));
         } else {
@@ -89,6 +93,29 @@ class Software extends CI_Controller {
             $this->render('galeria', array('map'=>$map, 'carpeta'=>$carpeta, 'software'=>$programa));
         }
     }
+    public function recomendar($id=null){
+        $this->load->library('form_validation');
+	$this->load->helper('language');
+        $this->load->helper('array');
+        $this->load->model('mGrupo');
+        if (!$this->ion_auth->logged_in()){
+            $this->render('noautorizado');
+            return;
+        }else{
+            $user = $this->ion_auth->user()->row();
+                
+                echo $user->id;
+            $grupos=$this->mGrupo->AssocNombre(array('teacher'=>$user->id));
+            $this->form_validation->set_rules('name', $this->lang->line('sesel_name'), 'required');
+            if ($this->form_validation->run() == false){
+                $this->render('recommend', array('software'=>  set_value('software'), 'grupos'=>$grupos));
+            }else{
+               $grupos=$this->mGeneral->registrar('recommendation', 
+                       elements(array('name','details','group','software'), $_POST));
+               
+            }
+                
+            
+        }
+    }
 }
-
-?>

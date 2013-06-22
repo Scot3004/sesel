@@ -17,6 +17,7 @@ class mGrupo extends CI_Model {
         return $this->db->get()->result();       
     }
     
+    //TODO: Reemplazar este metodo por el del modelo general
     public function buscar2($arr = array(), $tabla = 'groups') {
         $this->db->where($arr);
         $this->db->order_by('name');
@@ -51,5 +52,18 @@ class mGrupo extends CI_Model {
         $this->db->join('software s', 's.idSoftware=r.Software_idSoftware', 'INNER');
         $this->db->where($arr);
         return $this->db->get()->result();
+    }
+    
+    public function assocNombre($arr=array()){
+        $this->db->select('name, id');
+        $this->db->from('groups');
+        $this->db->where($arr);
+        $query = $this->db->get();
+        $result = $query->result();
+        $return=array();
+        foreach($result as $row){
+            $return[$row->id]=$row->name;
+        }
+        return $return;
     }
 }

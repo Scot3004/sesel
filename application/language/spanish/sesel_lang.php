@@ -6,6 +6,7 @@ $lang['sesel_logout']='Salir';
 $lang['sesel_register']='Registrarme';
 $lang['sesel_start']='Inicio';
 $lang['sesel_active']='Activo';
+$lang['sesel_recommend']='Recomendar';
 
 //General
 $lang['sesel_description']='Descripción';

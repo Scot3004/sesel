@@ -1,14 +1,32 @@
 <div class="rightColumn">
     <h1><?php echo $software->name; ?></h1>
        <p><?php
-        echo $this->lang->line('sesel_developer'),": ";
-        echo $software->developer, "<br/>"; 
-        echo $this->lang->line('sesel_url'),": ";
+        echo $this->lang->line('sesel_developer'),": ",
+             $software->developer, "<br/>",
+             $this->lang->line('sesel_url'),": ";
         echo anchor($software->url), "<br/>"; 
         echo $this->lang->line('sesel_location'),": "; 
         echo anchor($software->location), "<br/>";
-        echo $this->lang->line('sesel_description'),": ";
-        echo $software->description; 
+        ?>
+        <div data-role="collapsible">
+   <h3>Recomendar</h3>
+   <?php
+   echo form_open("software/recomendar/", 'data-ajax=false'),
+      '<p>',
+           lang('sesel_name', 'name'),
+           '<br />',
+           form_input('name', set_value('name')),
+      '</p>
+       <p>',
+           lang('sesel_details', 'details'),'<br />',
+            form_textarea('details',set_value('details')),'</p>',
+           
+        form_hidden('software',$software->idSoftware),
+        form_submit('submit', $this->lang->line('sesel_recommend')),
+        form_close(),
+"</div>",
+           $this->lang->line('sesel_description'),": ",
+        $software->description 
         ?></p>
 </div>
 <div class="leftColumn">
