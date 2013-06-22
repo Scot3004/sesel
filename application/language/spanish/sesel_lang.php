@@ -75,3 +75,5 @@ $lang['sesel_type_admin']='Administrador';
 $lang['sesel_admin']='Admin';
 $lang['sesel_change_password']='Cambiar Contraseña';
 $lang['sesel_user_admin']='Administrador de Usuarios';
+$lang['sesel_software_my_list']='Software que he recomendado';
+$lang['sesel_type']='Tipo';

@@ -169,6 +169,7 @@ class Admin extends CI_Controller {
             $crud->display_as('password',$this->lang->line('sesel_password'));
             $crud->display_as('level',$this->lang->line('sesel_level'));
             $crud->display_as('subject',$this->lang->line('sesel_subject'));
+            $crud->display_as('type',$this->lang->line('sesel_type'));
             $output = $crud->render();
             $this->_example_output($output);
         } catch (Exception $e) {

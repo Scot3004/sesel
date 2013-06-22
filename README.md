@@ -27,14 +27,14 @@ Control de acceso
 ------
 - [x] Login
 - [x] Cerrar Sesión
-- [-] Restablecer contraseña
+- [x] Restablecer contraseña
 - [-] Perfil de Usuario
 
 Grupos
 ------
 - [x] Realizar Busqueda de grupos
-- [+] Mostrar detalle de grupo
- - [+] por docente
+- [x] Mostrar detalle de grupo
+ - [x] por docente
  - [x] por asignatura
 - [-] Matricula en Grupo por parte de Estudiante
 
@@ -42,11 +42,11 @@ Software
 -------
 - [x] Realizar busquedas de software
  - [x] segun asignaturas    
- - [-] segun usuarios
- - [-] segun grupo
+ - [x] segun usuarios
+ - [x] segun grupo
 - [x] Mostrar detalles del software
 - [x] Galeria de Software
-- [-] Realizar recomendaciones en interfáz movil
+- [x] Realizar recomendaciones en interfáz movil
 - [x] Desarrollar una interfáz administrativa
 
 Sistema

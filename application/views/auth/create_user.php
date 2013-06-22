@@ -3,7 +3,7 @@
 
 <div id="infoMessage"><?php echo $message;?></div>
 
-<?php echo form_open("auth/create_user");?>
+<?php echo form_open("auth/create_user", "data-ajax='false'");?>
 
       <p>
             <?php echo lang('create_user_fname_label', 'first_name');?> <br />

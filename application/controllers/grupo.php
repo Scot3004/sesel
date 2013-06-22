@@ -57,7 +57,7 @@ class Grupo extends CI_Controller {
                 $asignatura->grupos=$this->mGrupo->buscar(array('g.subject'=>$asignatura->idSubject),'groups');
             }
         }
-        $this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
         $this->render('groups/list_category', array('categorias' => $asignaturas));
     }
     

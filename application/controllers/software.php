@@ -25,7 +25,8 @@ class Software extends CI_Controller {
     }
 
     public function index() {
-        $this->render("menus/software");
+        $user = $this->ion_auth->user()->row();
+        $this->render("menus/software", array('docente'=>$user->id));
     }
 
     public function listar() {
