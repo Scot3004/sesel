@@ -78,3 +78,4 @@ $lang['sesel_user_admin']='Administrador de Usuarios';
 $lang['sesel_software_my_list']='Software que he recomendado';
 $lang['sesel_type']='Tipo';
 $lang['sesel_upload']='Subir Archivos';
+$lang['sesel_upload_another']='Subir Mas Archivos';

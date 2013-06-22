@@ -123,13 +123,19 @@ class Software extends CI_Controller {
 	{
 		$config['upload_path'] = './assets/uploads/files/'.$id;
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		$config['max_size']	= '100000';
+		$config['max_width']  = '9999';
+		$config['max_height']  = '9999';
  $this->load->library('form_validation');
 	
 		$this->load->library('upload', $config);
-                
+                $pathToUpload=$config['upload_path'];
+                if ( ! file_exists($pathToUpload) ){
+                    $create = mkdir($pathToUpload, 0777);
+                    $createThumbsFolder = mkdir($pathToUpload . '/thumbs', 0777);
+                    if ( ! $create || ! $createThumbsFolder)
+                    return;
+                }
 
 		if ( ! $this->upload->do_upload())
 		{
@@ -139,7 +145,7 @@ class Software extends CI_Controller {
 		}
 		else
 		{
-			$data = array('upload_data' => $this->upload->data());
+			$data = array('upload_data' => $this->upload->data(), 'id'=>$id);
 
 			$this->load->view('software/upload/success', $data);
 		}
