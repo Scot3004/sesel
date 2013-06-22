@@ -19,7 +19,7 @@ class mDocente extends CI_Model {
     }
 
     public function buscarIDs($arr = array()) {
-        $this->db->select('concat(u.first_name, " ", u.last_name) as name, id', false);
+        $this->db->select('concat(u.first_name, " ", u.last_name) as name, id as idUsuario', false);
         $this->db->from('users u', false);
         $this->db->where($arr);
         $query = $this->db->get();

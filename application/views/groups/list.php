@@ -7,7 +7,7 @@
             foreach ($groups as $row):
                 echo '<li>'.anchor('grupo/detalle/'.$row->id, 
                     "<h1>".$row->name."</h1>
-                    <p>".$row->level."<br/>".$row->teacher."</p>
+                    <p>".$row->level."<br/>".$row->teacher."<br/>".$row->subject."</p>
                     ").'</li>';
             endforeach;
         endif;
