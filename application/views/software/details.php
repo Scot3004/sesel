@@ -24,6 +24,7 @@
         form_hidden('software',$software->idSoftware),
         form_submit('submit', $this->lang->line('sesel_recommend')),
         form_close(),
+        anchor('software/do_upload/'.$software->idSoftware, $this->lang->line('sesel_upload'),'data-role="button" data-icon="back" data-ajax="false"'),
 //"</div>",
            $this->lang->line('sesel_description'),": ",
         $software->description 
