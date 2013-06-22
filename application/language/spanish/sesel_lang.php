@@ -72,3 +72,6 @@ $lang['sesel_groups_list_teacher']='Listado de Grupos por Docente';
 $lang['sesel_type_student']='Estudiante';
 $lang['sesel_type_teacher']='Docente';
 $lang['sesel_type_admin']='Administrador';
+$lang['sesel_admin']='Admin';
+$lang['sesel_change_password']='Cambiar Contraseña';
+$lang['sesel_user_admin']='Administrador de Usuarios';

@@ -63,6 +63,9 @@ class Main extends CI_Controller {
         }
     }
     
+    public function menu($menu){
+        $this->render('menus/'.$menu);
+    }
     
     public function notfound(){
         $this->render('noencontrado');

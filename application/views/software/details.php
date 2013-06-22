@@ -8,11 +8,11 @@
         echo $this->lang->line('sesel_location'),": "; 
         echo anchor($software->location), "<br/>";
         ?>
-        <div data-role="collapsible">
-   <h3>Recomendar</h3>
+        <!--<div data-role="collapsible">
+   <h3>Recomendar</h3>-->
    <?php
    echo form_open("software/recomendar/", 'data-ajax=false'),
-      '<p>',
+      /*'<p>',
            lang('sesel_name', 'name'),
            '<br />',
            form_input('name', set_value('name')),
@@ -20,11 +20,11 @@
        <p>',
            lang('sesel_details', 'details'),'<br />',
             form_textarea('details',set_value('details')),'</p>',
-           
+        */   
         form_hidden('software',$software->idSoftware),
         form_submit('submit', $this->lang->line('sesel_recommend')),
         form_close(),
-"</div>",
+//"</div>",
            $this->lang->line('sesel_description'),": ",
         $software->description 
         ?></p>
