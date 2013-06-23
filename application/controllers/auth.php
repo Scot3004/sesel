@@ -6,9 +6,7 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('ion_auth');
-		$this->load->library('form_validation');
-		$this->load->helper('url');
-
+		
 		// Load MongoDB library instead of native db driver if required
 		$this->config->item('use_mongodb', 'ion_auth') ?
 		$this->load->library('mongo_db') :
@@ -78,7 +76,8 @@ class Auth extends CI_Controller {
 				//if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+				$this->login();
+                                //redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -111,7 +110,7 @@ class Auth extends CI_Controller {
 
 		//redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		$this->login();
 	}
 
 	//change password
@@ -123,7 +122,7 @@ class Auth extends CI_Controller {
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect('auth/login', 'refresh');
+			$this->login();
 		}
 
 		$user = $this->ion_auth->user()->row();

@@ -3,11 +3,12 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <title>Sesel | <?php echo $titulo ?></title>
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery.mobile-1.3.1.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery.mobile.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styles.css" />
+        <?php echo link_tag('css/mystyles.css'); ?>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/ditocss/idangerous.swiper.css" />
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-2.0.0.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mobile.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ditojs/idangerous.swiper.js"></script>
 
     </head>

@@ -15,7 +15,6 @@ class Software extends CI_Controller {
         $this->load->model('mPrograma');
         $this->load->model('mDocente');
         $this->load->model('mGeneral');
-        $this->load->helper('directory');
     }
 
     private function render($view, $params = array(), $titulo = "Software") {
@@ -31,7 +30,7 @@ class Software extends CI_Controller {
 
     public function listar() {
         try {
-            $programas = $this->mGeneral->buscar('software');
+            $programas = $this->mPrograma->buscar();
             $this->render('software/list', array('programas' => $programas));
         } catch (Exception $e) {
             $data['titulo'] = 'Problemas al buscar datos';
@@ -88,6 +87,7 @@ class Software extends CI_Controller {
         if($id===null){
             show_error($this->lang->line('sesel_software_not_found'));
         }else{
+            $this->load->helper('directory');
             $carpeta='assets/uploads/files/'.$id;
             $map = directory_map($carpeta);
             $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
