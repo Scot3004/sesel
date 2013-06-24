@@ -55,7 +55,6 @@ class Grupo extends CI_Controller {
     }
     
     public function docente($id=null){
-        $this->output->enable_profiler(TRUE);
         if($id===null){
             show_error(lang('sesel_no_teacher'),200);
         }else{
@@ -63,5 +62,13 @@ class Grupo extends CI_Controller {
             print_r($grupos);
             render('groups/list', lang('sesel_groups_list_teacher'), array('groups' => $grupos));
         }
+    }
+    
+    public function prueba(){
+        echo img("grupo/grafico_docente");
+    }
+    
+    public function grafico_docente(){
+        
     }
 }

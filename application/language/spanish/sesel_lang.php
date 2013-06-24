@@ -87,3 +87,8 @@ $lang['sesel_admin']='Admin';
 $lang['sesel_change_password']='Cambiar Contraseña';
 $lang['sesel_user_admin']='Administrador de Usuarios';
 $lang['sesel_no_teacher']='No Seleccionaste un Docente';
+
+//Graphs
+$lang['sesel_graph_line']='Gráfico Lineal';
+$lang['sesel_graph_pie']='Gráfico de Pastel';
+$lang['sesel_graph_pie_center']='Relacion de datos';//No acepta UTF-8
