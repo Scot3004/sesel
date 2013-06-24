@@ -27,6 +27,16 @@ class Main extends CI_Controller {
         $content=$this->markdown->parse_file($markdown_file_path);
         render("mensaje",lang('sesel_about'), array("title"=>lang('sesel_about'), "details"=>$content));
     }  
+    
+    public function readme($language=null){
+       // $this->render('info');
+        if($language===null)
+            $language=$this->config->item('language');
+        $this->load->library('markdown');
+        $markdown_file_path = 'Readme/'.$language.".md";
+        $content=$this->markdown->parse_file($markdown_file_path);
+        render("mensaje",lang('sesel_about'), array("title"=>lang('sesel_about'), "details"=>$content));
+    }  
 
     public function license($filename='README.md'){
         $file="licenses/".$filename.".txt";

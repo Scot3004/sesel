@@ -56,5 +56,5 @@ Sistema
 - [x] Archivo Readme Cargado
 - [x] Internaciolalización
  - [x] español
- - [x] ingles
+ - [-] ingles
 - [-] Script de Instalación

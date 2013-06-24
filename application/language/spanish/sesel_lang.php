@@ -8,6 +8,7 @@ $lang['sesel_start']='Inicio';
 $lang['sesel_active']='Activo';
 $lang['sesel_recommend']='Recomendar';
 $lang['sesel_about']='Acerca de';
+$lang['sesel_project']='Proyecto';
 
 //General
 $lang['sesel_description']='Descripción';
