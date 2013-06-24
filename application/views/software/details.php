@@ -11,7 +11,7 @@
         <!--<div data-role="collapsible">
    <h3>Recomendar</h3>-->
    <?php
-   echo form_open("software/recomendar/", 'data-ajax=false'),
+   echo form_open("software/recomendar/".$software->idSoftware, 'data-ajax=false'),
       /*'<p>',
            lang('sesel_name', 'name'),
            '<br />',

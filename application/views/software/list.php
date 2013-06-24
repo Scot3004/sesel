@@ -4,8 +4,10 @@
             <li data-role="list-divider" data-theme="c"><?php echo $this->lang->line('sesel_software_not_found');?></li>
             <?php
         else:
+            if(!isset($link))
+                $link='software/detalle/';
             foreach ($programas as $row):
-                echo '<li>'.anchor('software/detalle/'.$row->idSoftware, 
+                echo '<li>'.anchor($link.$row->idSoftware, 
                     "<h1>".$row->name."</h1>
                     <p>".$row->short_description."<br/>".$row->developer."</p>
                     ").'</li>';

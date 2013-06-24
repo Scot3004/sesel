@@ -50,4 +50,8 @@ class mGeneral extends CI_Model {
        }
        return $result;
     }
+    
+    public function contar_todo($tabla){
+       return $this->db->count_all_results($tabla);
+    }
 }

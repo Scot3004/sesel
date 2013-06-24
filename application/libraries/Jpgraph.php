@@ -94,6 +94,7 @@ class Jpgraph {
         $graph->Add($p1);
 
         // .. and send the image on it's marry way to the browser
-        $graph->Stroke();
+        //$graph->Stroke();
+        return $graph;
    }
 }

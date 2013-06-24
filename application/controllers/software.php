@@ -105,13 +105,20 @@ class Software extends CI_Controller {
             return;
         } else {
             $user = $this->ion_auth->user()->row();
-            echo $user->id;
             $grupos = $this->mGrupo->AssocNombre(array('teacher' => $user->id));
             $this->form_validation->set_rules('name', $this->lang->line('sesel_name'), 'required');
+            $this->form_validation->set_rules('software', $this->lang->line('sesel_software'), 'required');
             if ($this->form_validation->run() == false) {
-                render('recommend', lang('sesel_recommendation'), array('software' => set_value('software'), 'grupos' => $grupos));
-            } else {
+                 if($id===null){
+                     $id=set_value('software');
+                 }
+                render('recommend', lang('sesel_recommendation'), array('software' => $id, 'grupos' => $grupos));
+            } else if($id!==null){
                 $grupos = $this->mGeneral->registrar('recommendation', elements(array('name', 'details', 'group', 'software'), $_POST));
+                render('mensaje',lang('sesel_recommendation_saved'), array('title'=>lang('sesel_recommendation_saved'),'details'=>lang('sesel_recommendation_saved')));
+            }else {
+                $programas = $this->mPrograma->buscar();
+                render('software/list', lang('sesel_software_list'), array('programas' => $programas, 'link'=>'software/recomendar/'));
             }
         }
     }

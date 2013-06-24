@@ -55,6 +55,8 @@ $lang['sesel_weekly_hours']='Weekly Hours';
 
 //Recommentations
 $lang['sesel_recomendation']='Recommendation';
+$lang['sesel_recommendation_saved']='Recommendation Saved';
+
 
 //Users
 $lang['sesel_user']='User';

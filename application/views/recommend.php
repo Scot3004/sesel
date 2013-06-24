@@ -1,4 +1,4 @@
-<?php echo form_open("software/recomendar/", 'data-ajax=false');?>
+<?php echo form_open("software/recomendar/".$software, 'data-ajax=false');?>
 <?php echo validation_errors()?>      
 <p>
             <?php echo lang('sesel_name', 'name');?> <br />
@@ -15,5 +15,5 @@
       </p>
       <p><?php echo form_submit('submit', lang('sesel_recommend'));?></p>
 
-    <?php echo form_hidden('software',isset($_POST['software'])?$_POST['software']:"");?>
+    <?php echo form_hidden('software',$software);?>
 <?php echo form_close();?>
