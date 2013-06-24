@@ -3,14 +3,26 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <title>Sesel | <?php echo $titulo ?></title>
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery.mobile.css" />
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styles.css" />
-        <?php echo link_tag('css/mystyles.css'); ?>
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/ditocss/idangerous.swiper.css" />
+        <?php echo 
+            link_tag('assets/css/jquery.css'),
+            link_tag('assets/css/jquery.mobile.css'),
+            link_tag('assets/css/styles.css');
+        if(isset($css_files )){
+            foreach ($css_files as $file): 
+                echo link_tag('assets/css/'.$file);
+            endforeach;
+        }
+        ?>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mobile.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ditojs/idangerous.swiper.js"></script>
-
+        <?php 
+        if(isset($js_files )){
+            foreach ($js_files as $file): 
+                ?><script type="text/javascript" src="<?php echo base_url().('assets/js/'.$file); ?>"></script><?php
+            endforeach;
+        }    
+         ?>
+        
     </head>
     <body>
         <div data-role="page" data-theme="b">

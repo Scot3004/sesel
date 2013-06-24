@@ -7,27 +7,14 @@ class Admin extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-
-        $this->load->database();
-        $this->load->helper('url');
-        $this->load->model('mDocente');
-
         $this->load->library('grocery_CRUD');
     }
 
-    private function render($view, $params = array(), $titulo = null) {
-        if($titulo===null)
-            $titulo=$this->lang->line('sesel_subject');
-        $this->load->view('mobile', array('view' => $view,
-            'titulo' => $titulo,
-            'params' => $params));
-    }
-    
     function _example_output($output = null) {
         if ($this->ion_auth->is_admin()){
             $this->load->view('admin.php', $output);
         } else {
-            $this->render('noautorizado');
+            render('noautorizado');
         }
     }
 
@@ -116,41 +103,6 @@ class Admin extends CI_Controller {
     
     function bin2hex($value){
         return bin2hex($value);
-    }
-    
-    
-    function oldusuario() {
-        try {
-            $crud = new grocery_CRUD();
-
-            $crud->set_theme('datatables');
-            $crud->set_table('usuario');
-            $crud->set_subject('Usuario');
-            $crud->change_field_type("clave", "password");
-            $crud->set_relation_n_n('Grupos', 'estudiante', 'grupo', 'idUsuario', 'idGrupo', 'nombre');
-            $crud->unset_columns('clave');
-            $output = $crud->render();
-
-            $this->_example_output($output);
-        } catch (Exception $e) {
-            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
-        }
-    }
-
-    function docente() {
-        try {
-            $crud = new grocery_CRUD();
-            $crud->set_theme('datatables');
-            $crud->set_table('docente');
-            $crud->set_subject('Docente');
-            $crud->set_relation('idUsuario', 'usuario', '{nombres} {apellidos}');
-
-            $output = $crud->render();
-
-            $this->_example_output($output);
-        } catch (Exception $e) {
-            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
-        }
     }
     
     function grupo() {

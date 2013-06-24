@@ -20,19 +20,12 @@ class Main extends CI_Controller {
             parent::__construct();
     }
     
-    function render($view, $params = array(), $titulo="Pagina Principal") {
-         $this->load->view('mobile', 
-                     array('view'=>$view, 
-                         'titulo'=>$titulo, 
-                         'params'=>$params));
-    }
-   
     public function index(){
        // $this->render('info');
         $this->load->library('markdown');
         $markdown_file_path = 'README.md';
         $content=$this->markdown->parse_file($markdown_file_path);
-        $this->render("mensaje", array("titulo"=>"README", "detalle"=>$content));
+        render("mensaje",lang('sesel_about'), array("title"=>lang('sesel_about'), "details"=>$content));
     }  
 
     public function license($filename='README.md'){
@@ -46,7 +39,7 @@ class Main extends CI_Controller {
             while(!feof($f)) { 
                 $content.= fgets($f) . "<br />";
             }
-            $this->render("mensaje", array("titulo"=>$this->lang->line('sesel_license'), "detalle"=>$content));
+            render("mensaje",lang('sesel_license'), array("titulo"=>$this->lang->line('sesel_license'), "detalle"=>$content));
             fclose($f);
         }
     }
@@ -64,11 +57,11 @@ class Main extends CI_Controller {
     }
     
     public function menu($menu){
-        $this->render('menus/'.$menu);
+        render('menus/'.$menu);
     }
     
     public function notfound(){
-        $this->render('noencontrado');
+        render('noencontrado');
     }
     
     public function agent(){

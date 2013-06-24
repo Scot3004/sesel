@@ -7,6 +7,7 @@ $lang['sesel_register']='Registrarme';
 $lang['sesel_start']='Inicio';
 $lang['sesel_active']='Activo';
 $lang['sesel_recommend']='Recomendar';
+$lang['sesel_about']='Acerca de';
 
 //General
 $lang['sesel_description']='Descripción';
@@ -16,6 +17,11 @@ $lang['sesel_license']='Terminos de Licencia';
 $lang['sesel_maybe']='Quizás';
 $lang['sesel_name']='Nombre';
 $lang['sesel_short_description']='Resumen';
+$lang['sesel_type']='Tipo';
+$lang['sesel_upload']='Subir Archivos';
+$lang['sesel_upload_another']='Subir Mas Archivos';
+$lang['sesel_upload_success']='Archivo Subido con Exito';
+
 
 //Pages
 $lang['sesel_auth_header']='Control de Usuarios';
@@ -38,7 +44,9 @@ $lang['sesel_download']='Descarga';
 $lang['sesel_location']='Ubicación';
 $lang['sesel_url']='URL';
 $lang['sesel_version']='Versión';
-
+$lang['sesel_software_my_list']='Programas que he recomendado';
+$lang['sesel_software_details']='Detalles de Programa';
+$lang['sesel_software_gallery']='Galeria de Programa';
 //Subjects
 $lang['sesel_subject']='Asignatura';
 $lang['sesel_area']='Área';
@@ -64,6 +72,8 @@ $lang['sesel_email']='Correo';
 $lang['sesel_username']='Alias';
 $lang['sesel_groups']='Grupos';
 $lang['sesel_group']='Grupo';
+$lang['sesel_group_details']='Detalles de Grupo';
+$lang['sesel_my_groups']='Mis Grupos';
 $lang['sesel_groups_not_found']='No se encontraron grupos';
 $lang['sesel_groups_not_found_category']='No hay grupos para ésta categoria';
 $lang['sesel_groups_list']='Listado de Grupos';
@@ -75,8 +85,4 @@ $lang['sesel_type_admin']='Administrador';
 $lang['sesel_admin']='Admin';
 $lang['sesel_change_password']='Cambiar Contraseña';
 $lang['sesel_user_admin']='Administrador de Usuarios';
-$lang['sesel_software_my_list']='Software que he recomendado';
-$lang['sesel_type']='Tipo';
-$lang['sesel_upload']='Subir Archivos';
-$lang['sesel_upload_another']='Subir Mas Archivos';
-$lang['sesel_upload_success']='Archivo Subido con Exito';
+$lang['sesel_no_teacher']='No Seleccionaste un Docente';

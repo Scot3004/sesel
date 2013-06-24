@@ -4,19 +4,16 @@ class Grupo extends CI_Controller {
     public function __construct(){
             parent::__construct();
             $this->load->model('mGrupo');
-            $this->load->model('mPrograma');
-            $this->load->model('mDocente');
+            $this->load->model('mGeneral');
     }
  
-    function render($view, $params = array(), $titulo="Pagina Principal") {
-         $this->load->view('mobile', 
-                     array('view'=>$view, 
-                         'titulo'=>$titulo, 
-                         'params'=>$params));
-    }
-   
     public function index(){
-        $this->render("menus/grupo");
+        if ($this->ion_auth->logged_in()) {
+            $user = $this->ion_auth->user()->row();
+            $id=$user->id;
+        }else
+            $id=null;
+        render("menus/grupo",lang('sesel_groups'), array('docente'=>$id));
     } 
     
     public function listar() {
@@ -24,11 +21,9 @@ class Grupo extends CI_Controller {
             $grupos = $this->mGrupo->buscar();
             //$this->output->enable_profiler(TRUE);
             //print_r($grupos);
-            $this->render('groups/list', array('groups' => $grupos));
+            render('groups/list',lang('sesel_groups_list'), array('groups' => $grupos));
         } catch (Exception $e) {
-            $data['titulo'] = 'Problemas al buscar datos';
-            $data['detalle'] = $e->getMessage();
-            $this->render('error', $data);
+            show_error($e->getMessage());
         }
     }
     
@@ -39,7 +34,7 @@ class Grupo extends CI_Controller {
             $arr=array('g.id' => $id);
             $grupo = $this->mGrupo->buscar($arr);
             print_r($grupo);
-            $this->render('objeto', array('objeto' => $grupo[0]));
+            render('objeto',  lang('sesel_group_details'), array('objeto' => $grupo[0]));
         }
     }
     
@@ -49,26 +44,24 @@ class Grupo extends CI_Controller {
             $asignatura=new stdClass();
             $asignatura->name=$name;
             $asignatura->grupos=$grupos;
-            //print_r($asignatura);
             $asignaturas=array($asignatura);
         }else {
-            $asignaturas=$this->mGrupo->buscar2(array(),'subject');  
+            $asignaturas=$this->mGeneral->buscar('subject',array());  
             foreach ($asignaturas as $asignatura){
                 $asignatura->grupos=$this->mGrupo->buscar(array('g.subject'=>$asignatura->idSubject),'groups');
             }
         }
-        //$this->output->enable_profiler(TRUE);
-        $this->render('groups/list_category', array('categorias' => $asignaturas));
+        render('groups/list_category',lang('sesel_groups_list_subject'), array('categorias' => $asignaturas));
     }
     
     public function docente($id=null){
         $this->output->enable_profiler(TRUE);
         if($id===null){
-            $this->render('error', array('titulo'=>'No Docente', 'detalle'=>'No has escogido ningun docente'));
+            show_error(lang('sesel_no_teacher'),200);
         }else{
             $grupos = $this->mGrupo->buscar(array('u.id'=>$id));
             print_r($grupos);
-            $this->render('groups/list', array('groups' => $grupos));
+            render('groups/list', lang('sesel_groups_list_teacher'), array('groups' => $grupos));
         }
     }
 }

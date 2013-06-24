@@ -5,18 +5,17 @@ class Auth extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('ion_auth');
-		
+		/*
 		// Load MongoDB library instead of native db driver if required
 		$this->config->item('use_mongodb', 'ion_auth') ?
 		$this->load->library('mongo_db') :
 
 		$this->load->database();
-
+*/
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth');
-		$this->load->helper('language');
+		//$this->load->helper('language');
 	}
 
 	//redirect if needed, otherwise display the user list
@@ -737,7 +736,6 @@ class Auth extends CI_Controller {
 		$view_html = $this->load->view($view, $this->viewdata, $render);
 
 		if (!$render) return $view_html;*/
-            $header=$this->lang->line('sesel_auth_header');
             $this->load->view('mobile', array('view' => $view,
             'titulo' => $this->lang->line('sesel_auth_header'),
             'params' => $data));
