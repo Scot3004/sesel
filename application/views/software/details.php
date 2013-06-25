@@ -11,6 +11,7 @@
         <!--<div data-role="collapsible">
    <h3>Recomendar</h3>-->
    <?php
+if($teacher>0){
    echo form_open("software/recomendar/".$software->idSoftware, 'data-ajax=false'),
       /*'<p>',
            lang('sesel_name', 'name'),
@@ -24,9 +25,10 @@
         form_hidden('software',$software->idSoftware),
         form_submit('submit', $this->lang->line('sesel_recommend')),
         form_close(),
-        anchor('software/do_upload/'.$software->idSoftware, $this->lang->line('sesel_upload'),'data-role="button" data-icon="back" data-ajax="false"'),
+        anchor('software/do_upload/'.$software->idSoftware, $this->lang->line('sesel_upload'),'data-role="button" data-icon="back" data-ajax="false"');
 //"</div>",
-           $this->lang->line('sesel_description'),": ",
+}
+        echo $this->lang->line('sesel_description'),": ",
         $software->description 
         ?></p>
 </div>

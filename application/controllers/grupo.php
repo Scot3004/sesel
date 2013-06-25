@@ -8,12 +8,7 @@ class Grupo extends CI_Controller {
     }
  
     public function index(){
-        if ($this->ion_auth->logged_in()) {
-            $user = $this->ion_auth->user()->row();
-            $id=$user->id;
-        }else
-            $id=null;
-        render("menus/grupo",lang('sesel_groups'), array('docente'=>$id));
+        render("menus/grupo",lang('sesel_groups'));
     } 
     
     public function listar() {

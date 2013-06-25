@@ -49,7 +49,7 @@ class Main extends CI_Controller {
             while(!feof($f)) { 
                 $content.= fgets($f) . "<br />";
             }
-            render("mensaje",lang('sesel_license'), array("titulo"=>$this->lang->line('sesel_license'), "detalle"=>$content));
+            render("mensaje",lang('sesel_license'), array("title"=>$this->lang->line('sesel_license'), "details"=>$content));
             fclose($f);
         }
     }

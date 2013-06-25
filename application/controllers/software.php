@@ -18,13 +18,13 @@ class Software extends CI_Controller {
     }
 
     public function index() {
-        if ($this->ion_auth->logged_in()) {
+        /*if ($this->ion_auth->logged_in()) {
             $user = $this->ion_auth->user()->row();
             $id = $user->id;
         }
         else
-            $id = null;
-            render("menus/software", lang('sesel_software'), array('docente' => $id));
+            $id = null;*/
+        render("menus/software", lang('sesel_software'));
     }
 
     public function listar() {
@@ -88,7 +88,7 @@ class Software extends CI_Controller {
             $carpeta = 'assets/uploads/files/' . $id;
             $map = directory_map($carpeta);
             $programa = $this->mPrograma->buscarPrograma(array('idSoftware' => $id));
-            render('galeria', lang('sesel_software_gallery'),array('map' => $map, 'carpeta' => $carpeta, 'software' => $programa), array('css_files' => array('idangerous.swiper.css'),
+            render('software/galeria', lang('sesel_software_gallery'),array('map' => $map, 'carpeta' => $carpeta, 'software' => $programa), array('css_files' => array('idangerous.swiper.css'),
                 'js_files' => array('idangerous.swiper.js')
                     )
             );

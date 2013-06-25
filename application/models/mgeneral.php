@@ -51,7 +51,8 @@ class mGeneral extends CI_Model {
        return $result;
     }
     
-    public function contar_todo($tabla){
+    public function contar_todo($tabla, $where=array()){
+       $this->db->where($where); 
        return $this->db->count_all_results($tabla);
     }
 }

@@ -75,8 +75,7 @@ class Auth extends CI_Controller {
 				//if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				$this->login();
-                                //redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -388,11 +387,14 @@ class Auth extends CI_Controller {
 	{
 		$this->data['title'] = "Create User";
 
+                /*
+                 * Quitada restricción de admin o login
+                 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
 			redirect('auth', 'refresh');
 		}
-
+*/
 		//validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
@@ -736,9 +738,7 @@ class Auth extends CI_Controller {
 		$view_html = $this->load->view($view, $this->viewdata, $render);
 
 		if (!$render) return $view_html;*/
-            $this->load->view('mobile', array('view' => $view,
-            'titulo' => $this->lang->line('sesel_auth_header'),
-            'params' => $data));
+            render($view,$this->lang->line('sesel_auth_header'),$data);
 	}
 
 }
