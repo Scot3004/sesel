@@ -3,7 +3,7 @@
 
 <div id="infoMessage"><?php echo $message;?></div>
 
-<?php echo form_open(uri_string());?>
+<?php echo form_open(uri_string(), "data-ajax='false'");?>
 
       <p>
             <?php echo lang('edit_user_fname_label', 'first_name');?> <br />
@@ -16,8 +16,8 @@
       </p>
 
       <p>
-            <?php echo lang('edit_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
+            <?php echo lang('sesel_address', 'address');?> <br />
+            <?php echo form_input($address);?>
       </p>
 
       <p>

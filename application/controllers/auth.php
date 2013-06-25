@@ -400,7 +400,7 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email');
 		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
-		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('address', $this->lang->line('sesel_address'), 'required|xss_clean');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
@@ -413,7 +413,7 @@ class Auth extends CI_Controller {
 			$additional_data = array(
 				'first_name' => $this->input->post('first_name'),
 				'last_name'  => $this->input->post('last_name'),
-				'company'    => $this->input->post('company'),
+				'address'    => $this->input->post('address'),
 				'phone'      => $this->input->post('phone'),
 			);
 		}
@@ -448,11 +448,11 @@ class Auth extends CI_Controller {
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('email'),
 			);
-			$this->data['company'] = array(
-				'name'  => 'company',
-				'id'    => 'company',
+			$this->data['address'] = array(
+				'name'  => 'address',
+				'id'    => 'address',
 				'type'  => 'text',
-				'value' => $this->form_validation->set_value('company'),
+				'value' => $this->form_validation->set_value('address'),
 			);
 			$this->data['phone'] = array(
 				'name'  => 'phone',
@@ -495,21 +495,22 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('phone', $this->lang->line('edit_user_validation_phone_label'), 'required|xss_clean');
-		$this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('address', $this->lang->line('sesel_address'), 'required|xss_clean');
 		$this->form_validation->set_rules('groups', $this->lang->line('edit_user_validation_groups_label'), 'xss_clean');
 
 		if (isset($_POST) && !empty($_POST))
 		{
 			// do we have a valid request?
-			if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id'))
+			/*Problemas con jquery mobile
+                         * if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id'))
 			{
 				show_error($this->lang->line('error_csrf'));
-			}
+			}*/
 
 			$data = array(
 				'first_name' => $this->input->post('first_name'),
 				'last_name'  => $this->input->post('last_name'),
-				'company'    => $this->input->post('company'),
+				'address'    => $this->input->post('address'),
 				'phone'      => $this->input->post('phone'),
 			);
 
@@ -569,12 +570,12 @@ class Auth extends CI_Controller {
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('last_name', $user->last_name),
 		);
-		$this->data['company'] = array(
-			'name'  => 'company',
-			'id'    => 'company',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('company', $user->company),
-		);
+		$this->data['address'] = array(
+				'name'  => 'address',
+				'id'    => 'address',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('address', $user->address),
+                );
 		$this->data['phone'] = array(
 			'name'  => 'phone',
 			'id'    => 'phone',
@@ -646,6 +647,7 @@ class Auth extends CI_Controller {
 	//edit a group
 	function edit_group($id)
 	{
+            
 		// bail if no group id given
 		if(!$id || empty($id))
 		{
@@ -732,13 +734,13 @@ class Auth extends CI_Controller {
 
 	function _render_page($view, $data=null, $render=false)
 	{
-
-		/*$this->viewdata = (empty($data)) ? $this->data: $data;
-
-		$view_html = $this->load->view($view, $this->viewdata, $render);
-
-		if (!$render) return $view_html;*/
             render($view,$this->lang->line('sesel_auth_header'),$data);
 	}
+        
+        function _render_page2($view, $data=null, $render=false){
+            $this->viewdata = (empty($data)) ? $this->data: $data;
+            $view_html = $this->load->view($view, $this->viewdata, $render);
+            if (!$render) return $view_html;
+    }
 
 }

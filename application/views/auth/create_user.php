@@ -16,8 +16,8 @@
       </p>
 
       <p>
-            <?php echo lang('create_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
+            <?php echo lang('sesel_address', 'address');?> <br />
+            <?php echo form_input($address);?>
       </p>
 
       <p>
