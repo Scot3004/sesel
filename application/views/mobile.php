@@ -29,7 +29,7 @@
             <div data-role="header" data-theme="b" data-position="fixed" >
                 <a href="#" data-role="button" data-rel="back" data-icon="arrow-l"><?php echo lang('sesel_back') ?></a> 
                 <h1>Sesel - <?php echo $titulo ?></h1>
-                <a href="<?php echo site_url('main')?>" data-icon="info" title="Help" class="ui-btn-right"><?php echo lang('sesel_project') ?></a>
+                <a href="<?php echo site_url('main/menu/about')?>" data-icon="info" title="Help" class="ui-btn-right"><?php echo lang('sesel_project') ?></a>
             </div>
             <div data-role="navbar">
                 <?php $this->load->view('menus/general');?>

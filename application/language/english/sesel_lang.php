@@ -90,3 +90,10 @@ $lang['sesel_admin']='Admin';
 $lang['sesel_change_password']='Change password';
 $lang['sesel_user_admin']='Users admin';
 $lang['sesel_no_teacher']='No teacher found';
+
+
+//Graphs
+$lang['sesel_graphs']='Graphs';
+$lang['sesel_graph_line']='Linear Graph';
+$lang['sesel_graph_pie']='Pie Graph';
+$lang['sesel_graph_pie_center']='Data';//No acepta UTF-8
