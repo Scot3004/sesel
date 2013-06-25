@@ -73,6 +73,7 @@ $lang['sesel_ip_address']='IP Address';
 $lang['sesel_phone']='Phone';
 $lang['sesel_email']='e-mail';
 $lang['sesel_username']='Username';
+$lang['sesel_create_user']='Create User';
 $lang['sesel_groups']='Groups';
 $lang['sesel_group']='Group';
 $lang['sesel_group_details']='Group Details';
