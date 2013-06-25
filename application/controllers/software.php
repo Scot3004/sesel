@@ -112,7 +112,7 @@ class Software extends CI_Controller {
                  if($id===null){
                      $id=set_value('software');
                  }
-                render('recommend', lang('sesel_recommendation'), array('software' => $id, 'grupos' => $grupos));
+                render('software/recommend', lang('sesel_recommendation'), array('software' => $id, 'grupos' => $grupos));
             } else if($id!==null){
                 $grupos = $this->mGeneral->registrar('recommendation', elements(array('name', 'details', 'group', 'software'), $_POST));
                 render('mensaje',lang('sesel_recommendation_saved'), array('title'=>lang('sesel_recommendation_saved'),'details'=>lang('sesel_recommendation_saved')));
