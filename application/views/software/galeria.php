@@ -18,13 +18,12 @@
 		//etc..
 	});
         })
-        </script>
-<div class="nomsnap"><?php echo $software->name; ?></div>  
+        </script> 
 <div class="swiper-container" >
     
     <div class="swiper-wrapper">
         <!--Slide-->
-        
+            
            <?php
            foreach($map as $archivo){
                echo "<div class='swiper-slide'>";

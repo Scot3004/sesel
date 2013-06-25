@@ -32,7 +32,7 @@ class mGeneral extends CI_Model {
         }else{
             $show=$columna;
         }
-        $this->db->select($columna.",count(*) cuenta",false);
+        $this->db->select("`".$columna."`,count(*) cuenta",false);
         if($columna!==null)
              $this->db->group_by($tabla.".".$columna);
         $this->db->from($tabla);

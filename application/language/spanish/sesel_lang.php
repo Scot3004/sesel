@@ -54,7 +54,9 @@ $lang['sesel_area']='Área';
 $lang['sesel_weekly_hours']='IHS';
 
 //Recommentations
+//TODO: Eliminar el indice malo
 $lang['sesel_recomendation']='Recomendacion';
+$lang['sesel_recommendation']='Recomendacion';
 $lang['sesel_recommendation_saved']='Recomendacion Guardada';
 
 //Users
