@@ -18,12 +18,6 @@ class Software extends CI_Controller {
     }
 
     public function index() {
-        /*if ($this->ion_auth->logged_in()) {
-            $user = $this->ion_auth->user()->row();
-            $id = $user->id;
-        }
-        else
-            $id = null;*/
         render("menus/software", lang('sesel_software'));
     }
 
